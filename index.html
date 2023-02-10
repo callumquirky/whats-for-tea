@@ -15,19 +15,20 @@
     </header>
     <div class="container">
         <div class="row">
-            <section class="ingredient-search bg-light col-md-6">
-                <h4>What do I need?</h4>
-                <input placeholder="Spaghetti Carbonara" type="text">
-                <button class="btn">Search</button>
+            <section class="what-ingredient bg-light col-md-6">
+                <h3>What do I need?</h3>
+                <input id="ingredient-search-text"placeholder="Spaghetti Carbonara" type="text">
+                <button id="ingredient-search-button"class="btn">Search</button>
                 <div id="ingredient-section">
+                    <ul id="ingredient-list"></ul>
                     <!-- use DOM to return ingredients and other information here-->
                     <!-- also include Save To Meal Plan? functionality-->
                 </div>
             </section>
-            <section class="meal-search bg-light container-fluid col-md-6">
-                <h4>What To Make?</h4>
-                <input placeholder="onion" type="text">
-                <button class="btn">Search</button>
+            <section class="what-meal bg-light container-fluid col-md-6">
+                <h3>What To Make?</h3>
+                <input id="meal-search-text"placeholder="onion" type="text">
+                <button id="meal-search-button"class="btn">Search</button>
                 <div id="meal-section">
                     <!-- use DOM to return meals and other information here-->
                     <!-- also include Save To Meal Plan? functionality-->
@@ -37,18 +38,21 @@
     </div>
     <section class="meal-plan bg-light container col-12">
         <div class="row">
-            <div class="monday col-sm">Monday</div>
+            <div class="monday col-sm">Monday
                 <div id="monday-breakfast"></div>
                 <div id="monday-lunch"></div>
                 <div id="monday-dinner"></div>
-            <div class="tuesday col-sm">Tuesday</div>
+            </div>
+            <div class="tuesday col-sm">Tuesday
                 <div id="tuesday-breakfast"></div>
                 <div id="tuesday-lunch"></div>
                 <div id="tuesday-dinner"></div>
-            <div class="wednesday col-sm">Wednesday</div>
+            </div>
+            <div class="wednesday col-sm">Wednesday
                 <div id="wednesday-breakfast"></div>
                 <div id="wednesday-lunch"></div>
                 <div id="wednesday-dinner"></div>
+            </div> 
             <div class="thursday col-sm">Thursday
                 <div id="thursday-breakfast"></div>
                 <div id="thursday-lunch"></div>
@@ -64,7 +68,6 @@
                 <div id="saturday-lunch"></div>
                 <div id="saturday-dinner"></div>
             </div>
-                
             <div class="sunday col-sm">Sunday
                 <div id="sunday-breakfast"></div>
                 <div id="sunday-lunch"></div>
