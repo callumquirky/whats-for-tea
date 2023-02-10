@@ -31,15 +31,19 @@ function findIngredients(){
             let mealName = $('<h4>').text(response.meals[0].strMeal).attr("id", "meal-name")
             ingredSect.prepend(mealName)
             let ingredientKeysToIterate = ["strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7", "strIngredient8", "strIngredient9", "strIngredient10", "strIngredient11", "strIngredient12", "strIngredient13", "strIngredient14", "strIngredient15", "strIngredient16", "strIngredient17", "strIngredient18", "strIngredient19", "strIngredient20"]
+            let measurementKeysToIterate = ["strMeasure1","strMeasure2","strMeasure3","strMeasure4","strMeasure5","strMeasure6","strMeasure7","strMeasure8","strMeasure9","strMeasure10","strMeasure11","strMeasure12","strMeasure13","strMeasure14","strMeasure15","strMeasure16","strMeasure17","strMeasure18","strMeasure19","strMeasure20",]
             let ingredients=Object.keys(response.meals[0])
                                 .filter(a=>ingredientKeysToIterate.includes(a))
+                                .map(a=> response.meals[0][a]);
+            let measurements=Object.keys(response.meals[0])
+                                .filter(a=>measurementKeysToIterate.includes(a))
                                 .map(a=> response.meals[0][a]);
             for (let i = 0; i < ingredients.length; i++) {
                 if (ingredients[i]===""){
                     return;
                 }
                 else{
-                    let ingredientEl= $('<li>').text(ingredients[i])
+                    let ingredientEl= $('<li>').text(ingredients[i]+" "+measurements[i])
                     ingredList.append(ingredientEl)
                 }
             }   
