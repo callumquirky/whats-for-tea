@@ -1,6 +1,7 @@
 let ingredSect =$('#ingredient-section')
 let ingredList = $('#ingredient-list')
 let ingredSearch =$('#ingredient-search-text').val()
+let searchIngreds = []
 
 $('#ingredient-search-button').on("click", function(event){
     ingredList.html("")
@@ -14,6 +15,25 @@ $('#ingredient-search-button').on("click", function(event){
         findIngredients()
     }
  
+})
+
+$('#add-ingredient-button').on("click", function(){
+    searchIngreds.push($('#meal-search-text').val())
+    console.log(searchIngreds)
+    console.log($('#meal-search-text').val())
+    $('#meal-section').html("")
+    let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(", ")}`)
+    $('#meal-section').append(searchIngredsEl)
+})
+
+$('#meal-search-button').on("click", function(){
+    findMeals()
+})
+
+
+$(document).on("click", ".modal-close", function(){
+    console.log("button clicked = confirmed")
+    $('.modal-container').html("")
 })
 
 function findIngredients(){
@@ -66,7 +86,23 @@ function searchError(){
 }
 
 
-$(document).on("click", ".modal-close", function(){
-    console.log("button clicked = confirmed")
-    $('.modal-container').html("")
-})
+
+
+function findMeals(){
+    let spoonacularAPIKey = "26ca80bd388e4d61aafdcb35b171b6bc"
+    let searchRange = 5
+    let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+searchIngreds+"&number="+searchRange+"&apiKey="+spoonacularAPIKey
+    $.ajax({
+        url:queryURL,
+        method:"GET"
+    }).then(function(response){
+        console.log(response)
+        for (let i = 0; i < response.length; i++) {
+            let mealSugEl = $('<h4>').text(response[i].title);
+            $('#meal-section').append(mealSugEl)
+            
+        }
+    })
+
+}
+
