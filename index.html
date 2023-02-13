@@ -29,19 +29,26 @@
                 <h3>What To Make?</h3>
                 <input id="meal-search-text"placeholder="onion" type="text">
                 <button id="meal-search-button"class="btn">Search</button>
-                <div id="meal-section">
+                <button id="add-ingredient-button"class="btn">Add Ingredient To Search</button>
+                <div id="meal-section" card ="container">
+                    <div id="meal-card-row" class="row"></div>
+
                     <!-- use DOM to return meals and other information here-->
                     <!-- also include Save To Meal Plan? functionality-->
                 </div>
+                
             </section>
         </div>
     </div>
     <section class="meal-plan bg-light container col-12">
         <div class="row">
             <div class="monday col-sm">Monday
-                <div id="monday-breakfast"></div>
-                <div id="monday-lunch"></div>
-                <div id="monday-dinner"></div>
+                <div class="row">
+                    <div id="monday-breakfast" class="col-4"></div>
+                    <div id="monday-lunch"class="col-4"></div>
+                    <div id="monday-dinner" class="col-4"></div>
+                </div>
+    
             </div>
             <div class="tuesday col-sm">Tuesday
                 <div id="tuesday-breakfast"></div>
