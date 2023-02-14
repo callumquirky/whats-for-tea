@@ -21,22 +21,70 @@ $('#ingredient-search-button').on("click", function(event){
 
 $('#add-ingredient-button').on("click", function(){
     searchIngreds.push($('#meal-search-text').val())
-    console.log(searchIngreds)
-    console.log($('#meal-search-text').val())
     $('#meal-section').html("")
     let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(", ")}`)
     $('#meal-section').append(searchIngredsEl)
 })
 
 $('#meal-search-button').on("click", function(){
+    
     findMeals()
 })
 
-$(document).on("click", "#add-to-meal-plan")
+$(document).on("click", "#add-to-mealplan", function(){
+    // addToMealPlan()
+    let addToMealPlanBg = $('<div>').attr("class", "mealplan-selector-bg")
+    let addToMealPlanmodal = $('<div>').attr("class", "mealplan-selector")
+    let addToMealPlanModalImageEl = $('<img>').attr("src", $(this).parent().children()[1].currentSrc, "class", "card-img-top")
+    let addToMealPlanModalText =$('<h4>').text($(this).parent().children().children()[0].innerHTML)
+    let addToMealPlanModalClose = $('<span>').text("X").attr("class", "mealplan-selector-close")
 
+    let addToMealPlanFormBoxDay = $('<div>').attr("class", "mealplan-formbox")
+    let addToMealPlanDayLabel = $('<label>').attr("for", "mealplan-date")
+    let addToMealPlanDaySelect =$('<select>').attr("id", "mealplan-date")
+    let addToMealPlanOptionMon =$('<option>').attr("value", "monday").text("Monday")
+    let addToMealPlanOptionTue =$('<option>').attr("value", "tuesday").text("Tuesday")
+    let addToMealPlanOptionWed =$('<option>').attr("value", "wednesday").text("Wednesday")
+    let addToMealPlanOptionThur =$('<option>').attr("value", "thursday").text("Thursday")
+    let addToMealPlanOptionFri =$('<option>').attr("value", "friday").text("Friday")
+    let addToMealPlanOptionSat =$('<option>').attr("value", "saturday").text("Saturday")
+    let addToMealPlanOptionSun =$('<option>').attr("value", "sunday").text("Sunday")
 
-$(document).on("click", ".modal-close", function(){
-    console.log("button clicked = confirmed")
+    let addToMealPlanBtnDiv =$('<div>').attr("class", "mealplan-formbox buttons")
+    let addToMealPlanBtn =$('<div>').attr("id", "btnSend").text("Add to Meal-Plan")
+
+    let addToMealPlanFormBoxMeal = $('<div>').attr("class", "mealplan-formbox")
+    let addToMealPlanMealLabel = $('<label>').attr("for", "mealplan-plan")
+    let addToMealPlanMealSelect =$('<select>').attr("id", "mealplan-plan")
+    let addToMealPlanOptionBreakfast =$('<option>').attr("value", "breakfast").text("Breakfast")
+    let addToMealPlanOptionLunch =$('<option>').attr("value", "lunch").text("Lunch")
+    let addToMealPlanOptionEvening =$('<option>').attr("value", "dinner").text("Dinner")
+    
+    addToMealPlanMealSelect.append(addToMealPlanOptionBreakfast)
+    addToMealPlanMealSelect.append(addToMealPlanOptionLunch)
+    addToMealPlanMealSelect.append(addToMealPlanOptionEvening)    
+    
+    addToMealPlanDaySelect.append(addToMealPlanOptionMon)
+    addToMealPlanDaySelect.append(addToMealPlanOptionTue)
+    addToMealPlanDaySelect.append(addToMealPlanOptionWed)
+    addToMealPlanDaySelect.append(addToMealPlanOptionThur)
+    addToMealPlanDaySelect.append(addToMealPlanOptionFri)
+    addToMealPlanDaySelect.append(addToMealPlanOptionSat)
+    addToMealPlanDaySelect.append(addToMealPlanOptionSun)
+    addToMealPlanFormBoxDay.append(addToMealPlanDayLabel)
+    addToMealPlanFormBox.append(addToMealPlanDaySelect)
+
+    addToMealPlanBtnDiv.append(addToMealPlanBtn)
+
+    addToMealPlanmodal.append(addToMealPlanDaySelect)
+    addToMealPlanmodal.append(addToMealPlanModalImageEl)
+    addToMealPlanmodal.append(addToMealPlanModalClose)
+    addToMealPlanmodal.append(addToMealPlanModalText)
+    addToMealPlanBg.append(addToMealPlanmodal)
+    $('.modal-container').append(addToMealPlanBg)
+})
+    
+$(document).on("click", ".modal-close, .mealplan-selector-close", function(){
     $('.modal-container').html("")
 })
 
@@ -76,8 +124,6 @@ function findIngredients(){
 }
 
 function searchError(search){
-    console.log(search)
-    console.log(search.length)
     if (search.length === 0 || search === ""){
         let modalBg = $('<div>').attr("class", "error-modal-bg")
         let modal = $('<div>').attr("class", "error-modal")
@@ -101,8 +147,6 @@ function searchError(search){
 }
 
 
-
-
 function findMeals(){
     let searchRange = 5
     let spoonacularAPIKey = "26ca80bd388e4d61aafdcb35b171b6bc"
@@ -117,7 +161,7 @@ function findMeals(){
         else{
             console.log(response)
             for (let i = 0; i < response.length; i++) {
-                let cardCol = $('<div>').attr("class", "col")
+                let cardCol = $('<div>').attr("class", "col-4")
                 let mealCard = $('<div>').attr("class", "card")
                 let mealCardBody = $('<div>').attr("class", "card-body")
                 let mealTitleEl = $('<h5>').text(response[i].title).attr("class", "card-title");
@@ -128,8 +172,7 @@ function findMeals(){
                 mealCard.append(mealImageEl)
                 mealCard.append(mealPlanButton)
                 cardCol.append(mealCard)
-                $('#meal-section').append(cardCol)
-                
+                $('#meal-card-row').append(cardCol)
             }
         }
         
@@ -137,3 +180,6 @@ function findMeals(){
 
 }
 
+function addToMealPlan(meal){
+
+}

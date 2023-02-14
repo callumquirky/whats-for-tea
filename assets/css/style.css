@@ -10,7 +10,7 @@ header h2 {
     text-align: center;
 }
 
-.error-modal-bg {
+.error-modal-bg, .mealplan-selector-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -34,13 +34,25 @@ header h2 {
     
 }
 
-.modal-close {
+.mealplan-selector {
+    position: relative;
+    width: 65%;
+    height: 40%;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.mealplan-selector img {
+    width:40%
+}
+
+.modal-close, .mealplan-selector-close{
     position: absolute;
     top: 10px;
     right: 10px;
     font-weight: bold;
-}
-
-.modal-close{
-    cursor: pointer;
+    cursor:pointer
 }
