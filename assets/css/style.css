@@ -20,7 +20,15 @@ header h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: visibility 0s, opacity 1s;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.35s;
+}
+
+.bg-active {
+    visibility: visible;
+    opacity: 1;
+
 }
 
 .error-modal {
@@ -56,3 +64,4 @@ header h2 {
     font-weight: bold;
     cursor:pointer
 }
+
