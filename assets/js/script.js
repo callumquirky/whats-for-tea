@@ -3,6 +3,7 @@ let ingredList = $('#ingredient-list')
 let ingredSearch =$('#ingredient-search-text').val()
 let searchIngreds = [];
 
+setMeals()
 
 // search for meals via ingredients
 $('#ingredient-search-button').on("click", function(event){
@@ -140,8 +141,9 @@ function findMeals(){
 
 
 $('#mealPlanSubmit').on("click", function(){
+    let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
     let dateSelect = $('#mealplan-date')
-    let mealSelect =$('#mealplan-meal')
+    let mealSelect = $('#mealplan-meal')
     let selectedDate = dateSelect.val()
     let selectedMeal = mealSelect.val()
     let savedMeal = {
@@ -149,6 +151,23 @@ $('#mealPlanSubmit').on("click", function(){
         img: $(this).parent().parent()[0].children[1].currentSrc,
         mealSlot: "#"+selectedDate+"-"+selectedMeal
     }
-    $(`${savedMeal.mealSlot}-text`).text(savedMeal.text)
-    $(`${savedMeal.mealSlot}-img`).attr("src", savedMeal.img)
+    savedMeals.push(savedMeal)
+    localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
+    setMeals()
+    console.log($("#mealplan-date :selected").text())
+    let confirmDiv = $('<div>')
+    let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
+    confirmMessage.attr("class", 'confirm');
+    $(confirmDiv).append(confirmMessage);
+    $('.mealplan-selector').append(confirmDiv)
 })
+
+function setMeals() {
+    let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
+    console.log(savedMeals)
+    console.log(JSON.parse(localStorage.getItem('savedMeals')))
+    for (let i = 0; i < savedMeals.length; i++) {
+        $(`${savedMeals[i].mealSlot}-text`).text(savedMeals[i].text)
+        $(`${savedMeals[i].mealSlot}-img`).attr("src", savedMeals[i].img)
+    }
+}

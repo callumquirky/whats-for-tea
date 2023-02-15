@@ -50,7 +50,7 @@ header h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    flex-direction: column;
 }
 
 .mealplan-selector img {
