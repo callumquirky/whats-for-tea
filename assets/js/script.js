@@ -2,6 +2,7 @@ let ingredSect =$('#ingredient-section')
 let ingredList = $('#ingredient-list')
 let ingredSearch =$('#ingredient-search-text').val()
 let searchIngreds = [];
+let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
 
 setMeals()
 
@@ -141,6 +142,7 @@ function findMeals(){
 
 
 $('#mealPlanSubmit').on("click", function(){
+    $('.mealplan-confirm').html("")
     let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
     let dateSelect = $('#mealplan-date')
     let mealSelect = $('#mealplan-meal')
@@ -151,15 +153,25 @@ $('#mealPlanSubmit').on("click", function(){
         img: $(this).parent().parent()[0].children[1].currentSrc,
         mealSlot: "#"+selectedDate+"-"+selectedMeal
     }
-    savedMeals.push(savedMeal)
-    localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
-    setMeals()
-    console.log($("#mealplan-date :selected").text())
-    let confirmDiv = $('<div>')
-    let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
-    confirmMessage.attr("class", 'confirm');
-    $(confirmDiv).append(confirmMessage);
-    $('.mealplan-selector').append(confirmDiv)
+    
+    if(savedMeals.map(input => input.text).indexOf(savedMeal.text) && savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) == -1){
+        savedMeals.push(savedMeal)
+        localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
+        setMeals()
+        let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
+        let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
+        confirmMessage.attr("class", 'confirm');
+        $(confirmDiv).append(confirmMessage);
+        $('.mealplan-selector').append(confirmDiv)
+    }
+    else {
+        let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
+        let confirmMessage = $('<h4>').text(`Oops, you're already having ${savedMeal.text} for ${$("#mealplan-meal :selected").text()} on ${$("#mealplan-date :selected").text()} !`)
+        confirmMessage.attr("class", 'confirm');
+        $(confirmDiv).append(confirmMessage);
+        $('.mealplan-selector').append(confirmDiv)
+    }
+    
 })
 
 function setMeals() {
@@ -169,5 +181,11 @@ function setMeals() {
     for (let i = 0; i < savedMeals.length; i++) {
         $(`${savedMeals[i].mealSlot}-text`).text(savedMeals[i].text)
         $(`${savedMeals[i].mealSlot}-img`).attr("src", savedMeals[i].img)
+        let clearButton = $('<button>').attr("id", "clear-btn").text("Remove")
+        $(savedMeals[i].mealSlot).append(clearButton)
     }
 }
+
+$('#clear-btn').on("click", function(){
+    console.log($(this))
+})
