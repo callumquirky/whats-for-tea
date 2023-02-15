@@ -136,7 +136,7 @@ function findMeals(){
 
 }
  
-// add input from select html
+// append content in mealplanner from add to mealplan submit button
 
 
 $('#mealPlanSubmit').on("click", function(){
@@ -144,16 +144,11 @@ $('#mealPlanSubmit').on("click", function(){
     let mealSelect =$('#mealplan-meal')
     let selectedDate = dateSelect.val()
     let selectedMeal = mealSelect.val()
-    console.log(dateSelect)
-    console.log(mealSelect)
     let savedMeal = {
         text: $(this).parent().parent()[0].children[0].innerHTML,
         img: $(this).parent().parent()[0].children[1].currentSrc,
         mealSlot: "#"+selectedDate+"-"+selectedMeal
     }
-    console.log(savedMeal.text)
-    console.log(savedMeal.img)
-    console.log(savedMeal.mealSlot)
     $(`${savedMeal.mealSlot}-text`).text(savedMeal.text)
     $(`${savedMeal.mealSlot}-img`).attr("src", savedMeal.img)
 })
