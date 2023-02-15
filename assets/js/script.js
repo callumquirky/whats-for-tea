@@ -19,6 +19,8 @@ $('#ingredient-search-button').on("click", function(event){
  
 })
 
+
+// makes a list of ingredients that the user would like to search by for meals
 $('#add-ingredient-button').on("click", function(){
     searchIngreds.push($('#meal-search-text').val())
     $('#meal-section').html("")
@@ -26,63 +28,28 @@ $('#add-ingredient-button').on("click", function(){
     $('#meal-section').append(searchIngredsEl)
 })
 
-$('#meal-search-button').on("click", function(){
-    
+
+
+$('#meal-search-button').on("click", function(){    
     findMeals()
 })
 
+// eventlistener to make add to mealplan form when the user clicks
+
 $(document).on("click", "#add-to-mealplan", function(){
     $('.mealplan-selector-bg').addClass("bg-active")
-    // addToMealPlan()
-    // let addToMealPlanBg = $('<div>').attr("class", "mealplan-selector-bg")
-    // let addToMealPlanmodal = $('<div>').attr("class", "mealplan-selector")
-    // let addToMealPlanModalImageEl = $('<img>').attr("src", $(this).parent().children()[1].currentSrc, "class", "card-img-top")
-    // let addToMealPlanModalText =$('<h4>').text($(this).parent().children().children()[0].innerHTML)
-    // let addToMealPlanModalClose = $('<span>').text("X").attr("class", "mealplan-selector-close")
-    // let addToMealPlanFormBoxDay = $('<div>').attr("class", "mealplan-formbox")
-    // let addToMealPlanDayLabel = $('<label>').attr("for", "mealplan-date")
-    // let addToMealPlanDaySelect =$('<select>').attr("id", "mealplan-date")
-    // let addToMealPlanOptionMon =$('<option>').attr("value", "monday").text("Monday")
-    // let addToMealPlanOptionTue =$('<option>').attr("value", "tuesday").text("Tuesday")
-    // let addToMealPlanOptionWed =$('<option>').attr("value", "wednesday").text("Wednesday")
-    // let addToMealPlanOptionThur =$('<option>').attr("value", "thursday").text("Thursday")
-    // let addToMealPlanOptionFri =$('<option>').attr("value", "friday").text("Friday")
-    // let addToMealPlanOptionSat =$('<option>').attr("value", "saturday").text("Saturday")
-    // let addToMealPlanOptionSun =$('<option>').attr("value", "sunday").text("Sunday")
-    // let addToMealPlanBtnDiv =$('<div>').attr("class", "mealplan-formbox buttons")
-    // let addToMealPlanBtn =$('<div>').attr("id", "btnSend").text("Add to Meal-Plan")
-    // let addToMealPlanFormBoxMeal = $('<div>').attr("class", "mealplan-formbox")
-    // let addToMealPlanMealLabel = $('<label>').attr("for", "mealplan-plan")
-    // let addToMealPlanMealSelect =$('<select>').attr("id", "mealplan-plan")
-    // let addToMealPlanOptionBreakfast =$('<option>').attr("value", "breakfast").text("Breakfast")
-    // let addToMealPlanOptionLunch =$('<option>').attr("value", "lunch").text("Lunch")
-    // let addToMealPlanOptionEvening =$('<option>').attr("value", "dinner").text("Dinner")
-    // addToMealPlanMealSelect.append(addToMealPlanOptionBreakfast)
-    // addToMealPlanMealSelect.append(addToMealPlanOptionLunch)
-    // addToMealPlanMealSelect.append(addToMealPlanOptionEvening)    
-    // addToMealPlanFormBoxMeal.append()
-    // addToMealPlanDaySelect.append(addToMealPlanOptionMon)
-    // addToMealPlanDaySelect.append(addToMealPlanOptionTue)
-    // addToMealPlanDaySelect.append(addToMealPlanOptionWed)
-    // addToMealPlanDaySelect.append(addToMealPlanOptionThur)
-    // addToMealPlanDaySelect.append(addToMealPlanOptionFri)
-    // addToMealPlanDaySelect.append(addToMealPlanOptionSat)
-    // addToMealPlanDaySelect.append(addToMealPlanOptionSun)
-    // addToMealPlanFormBoxDay.append(addToMealPlanDayLabel)
-    // addToMealPlanFormBoxDay.append(addToMealPlanDaySelect)
-    // addToMealPlanBtnDiv.append(addToMealPlanBtn)
-    // addToMealPlanmodal.append(addToMealPlanDaySelect)
-    // addToMealPlanmodal.append(addToMealPlanModalImageEl)
-    // addToMealPlanmodal.append(addToMealPlanModalClose)
-    // addToMealPlanmodal.append(addToMealPlanModalText)
-    // addToMealPlanBg.append(addToMealPlanmodal)
-    // $('.modal-container').append(addToMealPlanBg)
+    $('#mealplan-selector-text').text($(this).parent().children().children()[0].innerHTML)
+    $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
 })
-    
+ 
+// eventlistener to close modals
+
 $(document).on("click", ".modal-close, .mealplan-selector-close", function(){
     $('.mealplan-selector-bg').removeClass("bg-active")
     $('.error-modal-bg').removeClass("bg-active")
 })
+
+// function to search for ingredients by searching for a meal
 
 function findIngredients(){
     let mealQuery = ingredSearch
@@ -119,33 +86,22 @@ function findIngredients(){
     })
 }
 
+// function to run an error message when the search comes empty
+
 function searchError(search){
     if (search.length === 0 || search === ""){
-        // let modalBg = $('<div>').attr("class", "error-modal-bg")
-        // let modal = $('<div>').attr("class", "error-modal")
-        // let modalText =$('<h4>').text(`Oops! Your search term is empty!`)
-        // let modalClose = $('<span>').text("X").attr("class", "modal-close")
-        // modal.append(modalClose)
-        // modal.append(modalText)
-        // modalBg.append(modal)
-        // $('.modal-container').append(modalBg)
         $('.error-modal-text').text(`Oops! Your search term is empty!`)
         $('.error-modal-bg').addClass("bg-active")
     }
     else {
-        // let modalBg = $('<div>').attr("class", "error-modal-bg")
-        // let modal = $('<div>').attr("class", "error-modal")
-        // let modalText =$('<h4>').text(`Oops! Unable to find any meals with search term "${search}"`)
-        // let modalClose = $('<span>').text("X").attr("class", "modal-close")
-        // modal.append(modalClose)
-        // modal.append(modalText)
-        // modalBg.append(modal)
-        // $('.modal-container').append(modalBg)
         $('.error-modal-text').text(`Oops! Unable to find any meals with search term "${search}"`)
         $('.error-modal-bg').addClass("bg-active")
     } 
 }
 
+
+
+// function to search for meals by ingredients
 
 function findMeals(){
     let searchRange = 5
@@ -179,7 +135,25 @@ function findMeals(){
     })
 
 }
+ 
+// add input from select html
 
-function addToMealPlan(meal){
 
-}
+$('#mealPlanSubmit').on("click", function(){
+    let dateSelect = $('#mealplan-date')
+    let mealSelect =$('#mealplan-meal')
+    let selectedDate = dateSelect.val()
+    let selectedMeal = mealSelect.val()
+    console.log(dateSelect)
+    console.log(mealSelect)
+    let savedMeal = {
+        text: $(this).parent().parent()[0].children[0].innerHTML,
+        img: $(this).parent().parent()[0].children[1].currentSrc,
+        mealSlot: "#"+selectedDate+"-"+selectedMeal
+    }
+    console.log(savedMeal.text)
+    console.log(savedMeal.img)
+    console.log(savedMeal.mealSlot)
+    $(`${savedMeal.mealSlot}-text`).text(savedMeal.text)
+    $(`${savedMeal.mealSlot}-img`).attr("src", savedMeal.img)
+})

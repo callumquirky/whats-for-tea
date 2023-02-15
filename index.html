@@ -45,40 +45,66 @@
     </div>
     <section class="meal-plan bg-light container col-12">
         <div class="row">
-            <div class="monday col-sm">Monday
+            <div class="monday col-sm">
+                <h3>Monday</h3>
                 <div class="row">
-                    <div id="monday-breakfast">Breakfast</div>
-                    <div id="monday-lunch">Lunch</div>
-                    <div id="monday-dinner">Evening</div>
+                    <div id="monday-breakfast">
+                        <h4>Breakfast</h4>
+                        <h5 id="monday-breakfast-text"></h5>
+                        <img src="" id="monday-breakfast-img">
+                    </div>
+                    <div id="monday-lunch">
+                        <h4>Lunch</h4>
+                        <h5 id="monday-lunch-text"></h5>
+                        <img src="" id="monday-breakfast-img">
+                    </div>
+                    <div id="monday-dinner">
+                        <h4>Dinner</h4>
+                        <h5 id="monday-dinner-text"></h5>
+                        <img src="" id="monday-breakfast-img">
+                    </div>
                 </div>
-    
             </div>
-            <div class="tuesday col-sm">Tuesday
-                <div id="tuesday-breakfast">Breakfast</div>
-                <div id="tuesday-lunch">Lunch</div>
+            <div class="tuesday col-sm">
+                <h4>Tuesday</h4>
+                <div id="tuesday-breakfast">
+                    <h4>Breakfast</h4>
+                    <h5 id="tuesday-breakfast-text"></h5>
+                    <img src="" id="tuesday-breakfast-img">
+                </div>
+                <div id="tuesday-lunch">
+                    <h4>Lunch</h4>
+                    <h5 id="tuesday-lunch-text"></h5>
+                    <img src="" id="tuesday-dinner-img">
+                </div>
                 <div id="tuesday-dinner">Evening</div>
             </div>
-            <div class="wednesday col-sm">Wednesday
+            <div class="wednesday col-sm">
+                <h4>Wednesday</h4>
                 <div id="wednesday-breakfast"></div>
                 <div id="wednesday-lunch"></div>
                 <div id="wednesday-dinner"></div>
             </div> 
-            <div class="thursday col-sm">Thursday
+            <div class="thursday col-sm">
+                <h4>Thursday</h4>
                 <div id="thursday-breakfast"></div>
                 <div id="thursday-lunch"></div>
                 <div id="thursday-dinner"></div>
             </div>
-            <div class="friday col-sm">Friday
+            <div class="friday col-sm">
+                <h4>Friday</h4>
                 <div id="friday-breakfast"></div>
                 <div id="friday-lunch"></div>
                 <div id="friday-dinner"></div>
             </div>
-            <div class="saturday col-sm">Saturday
+            <div class="saturday col-sm">
+                <h4>Saturday</h4>
                 <div id="saturday-breakfast"></div>
                 <div id="saturday-lunch"></div>
                 <div id="saturday-dinner"></div>
             </div>
-            <div class="sunday col-sm">Sunday
+            <div class="sunday col-sm">
+                <h4>Sunday</h4>
                 <div id="sunday-breakfast"></div>
                 <div id="sunday-lunch"></div>
                 <div id="sunday-dinner"></div>
@@ -96,12 +122,12 @@
     <div class="add-to-meal-plan-container">
         <div class="mealplan-selector-bg">
             <div class="mealplan-selector">
-                <h4></h4>
-                <img src="" class="card-img-top">
+                <h4 id="mealplan-selector-text"></h4>
+                <img src="" id="mealplan-selector-img" class="card-img-top">
                 <span class="mealplan-selector-close">X</span>
                 <div class="mealplan-formbox">
                     <label for="mealplan-date"></label>
-                    <select name="mealplan-date" id="mealplan-date"></select>
+                    <select name="mealplan-date" id="mealplan-date">
                         <option value="monday">Monday</option>
                         <option value="tuesday">Tuesday</option>
                         <option value="wednesday">Wednesday</option>
@@ -109,12 +135,16 @@
                         <option value="friday">Friday</option>
                         <option value="saturday">Saturday</option>
                         <option value="sunday">Sunday</option>
+                    </select>    
                     <label for="mealplan-meal"></label>
                     <select name="mealplan-meal" id="mealplan-meal">
                         <option value="breakfast">Breakfast</option>
                         <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
                     </select>
+                </div>
+                <div class="mealplan-formbox">
+                    <button id="mealPlanSubmit">Add To Meal-Plan!</button>
                 </div>
             </div>
             
