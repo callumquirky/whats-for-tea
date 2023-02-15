@@ -19,26 +19,37 @@ $('#ingredient-search-button').on("click", function(event){
  
 })
 
+
+// makes a list of ingredients that the user would like to search by for meals
 $('#add-ingredient-button').on("click", function(){
     searchIngreds.push($('#meal-search-text').val())
-    console.log(searchIngreds)
-    console.log($('#meal-search-text').val())
     $('#meal-section').html("")
     let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(", ")}`)
     $('#meal-section').append(searchIngredsEl)
 })
 
-$('#meal-search-button').on("click", function(){
+
+
+$('#meal-search-button').on("click", function(){    
     findMeals()
 })
 
-$(document).on("click", "#add-to-meal-plan")
+// eventlistener to make add to mealplan form when the user clicks
 
-
-$(document).on("click", ".modal-close", function(){
-    console.log("button clicked = confirmed")
-    $('.modal-container').html("")
+$(document).on("click", "#add-to-mealplan", function(){
+    $('.mealplan-selector-bg').addClass("bg-active")
+    $('#mealplan-selector-text').text($(this).parent().children().children()[0].innerHTML)
+    $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
 })
+ 
+// eventlistener to close modals
+
+$(document).on("click", ".modal-close, .mealplan-selector-close", function(){
+    $('.mealplan-selector-bg').removeClass("bg-active")
+    $('.error-modal-bg').removeClass("bg-active")
+})
+
+// function to search for ingredients by searching for a meal
 
 function findIngredients(){
     let mealQuery = ingredSearch
@@ -75,33 +86,22 @@ function findIngredients(){
     })
 }
 
+// function to run an error message when the search comes empty
+
 function searchError(search){
-    console.log(search)
-    console.log(search.length)
     if (search.length === 0 || search === ""){
-        let modalBg = $('<div>').attr("class", "error-modal-bg")
-        let modal = $('<div>').attr("class", "error-modal")
-        let modalText =$('<h4>').text(`Oops! Your search term is empty!`)
-        let modalClose = $('<span>').text("X").attr("class", "modal-close")
-        modal.append(modalClose)
-        modal.append(modalText)
-        modalBg.append(modal)
-        $('.modal-container').append(modalBg)
+        $('.error-modal-text').text(`Oops! Your search term is empty!`)
+        $('.error-modal-bg').addClass("bg-active")
     }
     else {
-        let modalBg = $('<div>').attr("class", "error-modal-bg")
-        let modal = $('<div>').attr("class", "error-modal")
-        let modalText =$('<h4>').text(`Oops! Unable to find any meals with search term "${search}"`)
-        let modalClose = $('<span>').text("X").attr("class", "modal-close")
-        modal.append(modalClose)
-        modal.append(modalText)
-        modalBg.append(modal)
-        $('.modal-container').append(modalBg)
+        $('.error-modal-text').text(`Oops! Unable to find any meals with search term "${search}"`)
+        $('.error-modal-bg').addClass("bg-active")
     } 
 }
 
 
 
+// function to search for meals by ingredients
 
 function findMeals(){
     let searchRange = 5
@@ -117,7 +117,7 @@ function findMeals(){
         else{
             console.log(response)
             for (let i = 0; i < response.length; i++) {
-                let cardCol = $('<div>').attr("class", "col")
+                let cardCol = $('<div>').attr("class", "col-4")
                 let mealCard = $('<div>').attr("class", "card")
                 let mealCardBody = $('<div>').attr("class", "card-body")
                 let mealTitleEl = $('<h5>').text(response[i].title).attr("class", "card-title");
@@ -128,12 +128,27 @@ function findMeals(){
                 mealCard.append(mealImageEl)
                 mealCard.append(mealPlanButton)
                 cardCol.append(mealCard)
-                $('#meal-section').append(cardCol)
-                
+                $('#meal-card-row').append(cardCol)
             }
         }
         
     })
 
 }
+ 
+// append content in mealplanner from add to mealplan submit button
 
+
+$('#mealPlanSubmit').on("click", function(){
+    let dateSelect = $('#mealplan-date')
+    let mealSelect =$('#mealplan-meal')
+    let selectedDate = dateSelect.val()
+    let selectedMeal = mealSelect.val()
+    let savedMeal = {
+        text: $(this).parent().parent()[0].children[0].innerHTML,
+        img: $(this).parent().parent()[0].children[1].currentSrc,
+        mealSlot: "#"+selectedDate+"-"+selectedMeal
+    }
+    $(`${savedMeal.mealSlot}-text`).text(savedMeal.text)
+    $(`${savedMeal.mealSlot}-img`).attr("src", savedMeal.img)
+})
