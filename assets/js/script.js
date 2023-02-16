@@ -64,7 +64,6 @@ function findIngredients(){
             searchError(ingredSearch)
         }
         else{
-            console.log(response)
             let mealName = $('<h4>').text(response.meals[0].strMeal).attr("id", "meal-name")
             ingredSect.prepend(mealName)
             let ingredientKeysToIterate = ["strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7", "strIngredient8", "strIngredient9", "strIngredient10", "strIngredient11", "strIngredient12", "strIngredient13", "strIngredient14", "strIngredient15", "strIngredient16", "strIngredient17", "strIngredient18", "strIngredient19", "strIngredient20"]
@@ -117,7 +116,6 @@ function findMeals(){
             searchError(searchIngreds)
         }
         else{
-            console.log(response)
             for (let i = 0; i < response.length; i++) {
                 let cardCol = $('<div>').attr("class", "col-4")
                 let mealCard = $('<div>').attr("class", "card")
@@ -160,7 +158,7 @@ $('#mealPlanSubmit').on("click", function(){
         let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
         let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
         confirmMessage.attr("class", 'confirm');
-        $(confirmDiv).append(confirmMessage);
+        confirmDiv.append(confirmMessage);
         $('.mealplan-selector').append(confirmDiv)
     }
     else {
@@ -183,17 +181,11 @@ function setMeals() {
 }
 
 $(document).on("click", ".clear-btn", function(event){
-    console.log("#"+$(this).parent())
-    console.log(savedMeals[0].mealSlot)
-    console.log("#"+$(this).parent()[0].id == savedMeals[0].mealSlot)
-    console.log(savedMeals[0])
     for (let i = 0; i < savedMeals.length; i++) {
-        if("#"+$(this).parent()[0].id == savedMeals[i].mealSlot){
+        if("#"+$(this).parent()[i].id == savedMeals[i].mealSlot){
             let indexRemove = savedMeals.map(input => input.mealSlot).indexOf(savedMeals.mealSlot)
-            console.log(indexRemove)
             savedMeals.splice(indexRemove, 1)
             localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
-            console.log($(this).parent()[i])
             $(`#${$(this).parent()[i].id}-text`).html("")
             $(`#${$(this).parent()[i].id}-img`).attr("src", "")
             event.target.remove()
