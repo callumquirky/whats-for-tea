@@ -64,3 +64,6 @@ header h2 {
     cursor:pointer
 }
 
+.returned-meal {
+    cursor: pointer;
+}
