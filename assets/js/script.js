@@ -4,6 +4,9 @@ let ingredSearch =$('#ingredient-search-text').val()
 let searchIngreds = [];
 let spoonacularAPIKey = "26ca80bd388e4d61aafdcb35b171b6bc"
 let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
+let mealPreference = [];
+let dietPreference =[];
+let intolerancePreference = [];
 
 setMeals()
 
@@ -25,16 +28,23 @@ $('#ingredient-search-button').on("click", function(event){
 
 // makes a list of ingredients that the user would like to search by for meals
 $('#add-ingredient-button').on("click", function(){
-    searchIngreds.push($('#meal-search-text').val())
+    searchIngreds.push($('#meal-search-text').val()+",")
     $('#meal-section').empty()
-    let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(", ")}`)
+    let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(",")}`)
     $('#meal-section').append(searchIngredsEl)
 })
 
+$('#meal-search-filters').on("click", function(){
+    $('.search-preferences-bg').addClass("bg-active")
+    mealPreference = [];
+    dietPreference =[];
+    intolerancePreference = [];
+})
 
 
 $('#meal-search-button').on("click", function(){    
     findMeals()
+    console.log("yes")
 })
 
 // eventlistener to make add to mealplan form when the user clicks
@@ -45,7 +55,7 @@ $(document).on("click", ".add-to-mealplan", function(){
         $('#mealplan-selector-text').text($(this).parent().children()[0].innerHTML)
         $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
     }
-    else{
+    else{   
         $('.mealplan-selector-bg').addClass("bg-active")
         $('#mealplan-selector-text').text($(this).parent().children().children()[0].innerHTML)
         $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
@@ -54,9 +64,10 @@ $(document).on("click", ".add-to-mealplan", function(){
  
 // eventlistener to close modals
 
-$(document).on("click", ".modal-close, .mealplan-selector-close", function(){
+$(document).on("click", ".modal-close, .mealplan-selector-close, .search-close", function(){
     $('.mealplan-selector-bg').removeClass("bg-active")
     $('.error-modal-bg').removeClass("bg-active")
+    $('.search-preferences-bg').removeClass("bg-active")
 })
 
 // function to search for ingredients by searching for a meal
@@ -69,6 +80,7 @@ function findIngredients(){
         method:"GET"
     }).then(function(response){
         console.log(response)
+        console.log(response.results)
         if (response.results.length == 0){
             searchError(ingredSearch)
         }
@@ -79,34 +91,13 @@ function findIngredients(){
                 let mealImg =$('<img>').attr("src", response.results[i].image)
                 returnedMealDiv.append(mealName, mealImg)
                 ingredSect.append(returnedMealDiv)
-                
-            }
-            // let mealName = $('<h4>').text(response.meals[0].strMeal).attr("id", "meal-name")
-            // ingredSect.prepend(mealName)
-            // let ingredientKeysToIterate = ["strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7", "strIngredient8", "strIngredient9", "strIngredient10", "strIngredient11", "strIngredient12", "strIngredient13", "strIngredient14", "strIngredient15", "strIngredient16", "strIngredient17", "strIngredient18", "strIngredient19", "strIngredient20"]
-            // let measurementKeysToIterate = ["strMeasure1","strMeasure2","strMeasure3","strMeasure4","strMeasure5","strMeasure6","strMeasure7","strMeasure8","strMeasure9","strMeasure10","strMeasure11","strMeasure12","strMeasure13","strMeasure14","strMeasure15","strMeasure16","strMeasure17","strMeasure18","strMeasure19","strMeasure20",]
-            // let ingredients=Object.keys(response.meals[0])
-            //                     .filter(a=>ingredientKeysToIterate.includes(a))
-            //                     .map(a=> response.meals[0][a]);
-            // let measurements=Object.keys(response.meals[0])
-            //                     .filter(a=>measurementKeysToIterate.includes(a))
-            //                     .map(a=> response.meals[0][a]);
-            // for (let i = 0; i < ingredients.length; i++) {
-            //     if (ingredients[i]===""){
-            //         return;
-            //     }
-            //     else{
-            //         let ingredientEl= $('<li>').text(ingredients[i]+" "+measurements[i])
-            //         ingredList.append(ingredientEl)
-            //     }
-            // }   
+            } 
         }
     })
 }
 
 $(document).on("click", ".returned-meal", function(){
     ingredSect.empty()
-    console.log($(this)[0].dataset.id)
     let mealId = ($(this)[0].dataset.id)
     let queryURL = "https://api.spoonacular.com/recipes/"+mealId+"/information"+"?apiKey="+spoonacularAPIKey
     $.ajax({
@@ -119,7 +110,6 @@ $(document).on("click", ".returned-meal", function(){
         let ingredientUl = $('<ul>').addClass("ingredient-list")
         let mealPlanButton = $('<button>').text("Add To Meal-Plan?").attr("class", "add-to-mealplan")
         for (let i = 0; i < response.extendedIngredients.length; i++) {
-            console.log(response.extendedIngredients[i])
             let ingredientText= $('<li>').text(`${response.extendedIngredients[i].name}: ${response.extendedIngredients[i].measures.metric.amount} ${response.extendedIngredients[i].measures.metric.unitShort}`)
             ingredientUl.append(ingredientText)
         }
@@ -130,7 +120,6 @@ $(document).on("click", ".returned-meal", function(){
 // function to run an error message when the search comes empty
 
 function searchError(search){
-    console.log(search)
     if (search === "" || search == undefined){
         $('.error-modal-text').text(`Oops! Your search term is empty!`)
         $('.error-modal-bg').addClass("bg-active")
@@ -147,7 +136,12 @@ function searchError(search){
 
 function findMeals(){
     let searchRange = 5
-    let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+searchIngreds+"&number="+searchRange+"&apiKey="+spoonacularAPIKey
+    console.log(mealPreference)
+    console.log(intolerancePreference)
+    console.log(dietPreference)
+    console.log(searchIngreds)
+    let queryURL = "https://api.spoonacular.com/recipes/complexSearch"+"?includeIngredients="+searchIngreds+"&diet="+dietPreference+"&intolerances="+intolerancePreference+"&type="+mealPreference+"&apiKey="+spoonacularAPIKey
+    console.log(queryURL)
     $.ajax({
         url:queryURL,
         method:"GET"
@@ -156,13 +150,14 @@ function findMeals(){
             searchError(searchIngreds)
         }
         else{
-            for (let i = 0; i < response.length; i++) {
-                let cardCol = $('<div>').attr("class", "col-4")
-                let mealCard = $('<div>').attr("class", "card")
-                let mealCardBody = $('<div>').attr("class", "card-body")
-                let mealTitleEl = $('<h5>').text(response[i].title).attr("class", "card-title");
-                let mealImageEl = $('<img>').attr("src", response[i].image, "class", "card-img-top")
-                let mealPlanButton = $('<button>').text("Add To Meal-Plan?").attr("class", "add-to-mealplan")
+            console.log(response)
+            for (let i = 0; i < response.results.length; i++) {
+                let cardCol = $('<div>').addClass("col-3 returned-meal").attr("data-id", response.results[i].id)
+                let mealCard = $('<div>').addClass("card")
+                let mealCardBody = $('<div>').addClass("card-body")
+                let mealTitleEl = $('<h5>').text(response.results[i].title).addClass("card-title");
+                let mealImageEl = $('<img>').attr("src", response.results[i].image).addClass("card-img-top")
+                let mealPlanButton = $('<button>').text("Add To Meal-Plan?").addClass("add-to-mealplan")
                 mealCardBody.append(mealTitleEl)
                 mealCard.append(mealCardBody)
                 mealCard.append(mealImageEl)
@@ -233,3 +228,32 @@ $(document).on("click", ".clear-btn", function(event){
         }
     }
 })
+
+let preferenceForm = $("form");
+
+preferenceForm.on("submit", function(event){
+    event.preventDefault();
+    console.log($('input[type="checkbox"]'))
+    for (let i = 0; i < 20; i++) {
+        if(i<3){
+            if($('input[type="checkbox"]')[i].checked){
+                mealPreference.push($('input[type="checkbox"]')[i].value)
+                console.log(mealPreference)
+            }
+        }
+        else if(i>=3 && i<8){
+            if ($('input[type="checkbox"]')[i].checked){
+                dietPreference.push($('input[type="checkbox"]')[i].value)
+                console.log(dietPreference)
+            }
+        }
+        else if(i>=8){
+            if ($('input[type="checkbox"]')[i].checked){
+            intolerancePreference.push($('input[type="checkbox"]')[i].value)
+            console.log(intolerancePreference)
+            }
+        }    
+        }
+    $('.search-preferences-bg').removeClass("bg-active")
+    }
+)
