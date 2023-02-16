@@ -2,7 +2,9 @@ let ingredSect =$('#ingredient-section')
 let ingredList = $('#ingredient-list')
 let ingredSearch =$('#ingredient-search-text').val()
 let searchIngreds = [];
+let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
 
+setMeals()
 
 // search for meals via ingredients
 $('#ingredient-search-button').on("click", function(event){
@@ -62,7 +64,6 @@ function findIngredients(){
             searchError(ingredSearch)
         }
         else{
-            console.log(response)
             let mealName = $('<h4>').text(response.meals[0].strMeal).attr("id", "meal-name")
             ingredSect.prepend(mealName)
             let ingredientKeysToIterate = ["strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7", "strIngredient8", "strIngredient9", "strIngredient10", "strIngredient11", "strIngredient12", "strIngredient13", "strIngredient14", "strIngredient15", "strIngredient16", "strIngredient17", "strIngredient18", "strIngredient19", "strIngredient20"]
@@ -115,7 +116,6 @@ function findMeals(){
             searchError(searchIngreds)
         }
         else{
-            console.log(response)
             for (let i = 0; i < response.length; i++) {
                 let cardCol = $('<div>').attr("class", "col-4")
                 let mealCard = $('<div>').attr("class", "card")
@@ -140,8 +140,9 @@ function findMeals(){
 
 
 $('#mealPlanSubmit').on("click", function(){
+    $('.mealplan-confirm').html("")
     let dateSelect = $('#mealplan-date')
-    let mealSelect =$('#mealplan-meal')
+    let mealSelect = $('#mealplan-meal')
     let selectedDate = dateSelect.val()
     let selectedMeal = mealSelect.val()
     let savedMeal = {
@@ -149,6 +150,47 @@ $('#mealPlanSubmit').on("click", function(){
         img: $(this).parent().parent()[0].children[1].currentSrc,
         mealSlot: "#"+selectedDate+"-"+selectedMeal
     }
-    $(`${savedMeal.mealSlot}-text`).text(savedMeal.text)
-    $(`${savedMeal.mealSlot}-img`).attr("src", savedMeal.img)
+    
+    if(savedMeals.map(input => input.text).indexOf(savedMeal.text) && savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) == -1){
+        savedMeals.push(savedMeal)
+        localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
+        setMeals()
+        let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
+        let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
+        confirmMessage.attr("class", 'confirm');
+        confirmDiv.append(confirmMessage);
+        $('.mealplan-selector').append(confirmDiv)
+    }
+    else {
+        let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
+        let confirmMessage = $('<h4>').text(`Oops, you're already having ${savedMeal.text} for ${$("#mealplan-meal :selected").text()} on ${$("#mealplan-date :selected").text()} !`)
+        confirmMessage.attr("class", 'confirm');
+        $(confirmDiv).append(confirmMessage);
+        $('.mealplan-selector').append(confirmDiv)
+    }
+    
+})
+
+function setMeals() {
+    for (let i = 0; i < savedMeals.length; i++) {
+        $(`${savedMeals[i].mealSlot}-text`).text(savedMeals[i].text)
+        $(`${savedMeals[i].mealSlot}-img`).attr("src", savedMeals[i].img)
+        let clearButton = $('<button>').addClass("clear-btn").text("Remove")
+        $(savedMeals[i].mealSlot).append(clearButton)
+    }
+}
+
+$(document).on("click", ".clear-btn", function(event){
+    for (let i = 0; i < savedMeals.length; i++) {
+        if("#"+$(this).parent()[i].id == savedMeals[i].mealSlot){
+            let indexRemove = savedMeals.map(input => input.mealSlot).indexOf(savedMeals.mealSlot)
+            savedMeals.splice(indexRemove, 1)
+            localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
+            $(`#${$(this).parent()[i].id}-text`).html("")
+            $(`#${$(this).parent()[i].id}-img`).attr("src", "")
+            event.target.remove()
+            $(this).parent()[i]
+            setMeals()
+        }
+    }
 })

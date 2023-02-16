@@ -44,13 +44,12 @@ header h2 {
 
 .mealplan-selector {
     position: relative;
-    width: 65%;
-    height: 40%;
+    width: 50vw;
     background-color: blueviolet;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    flex-direction: column;
 }
 
 .mealplan-selector img {
