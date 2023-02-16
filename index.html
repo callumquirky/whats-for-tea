@@ -18,7 +18,6 @@
         <input id="ingredient-search-text"placeholder="Spaghetti Carbonara" type="text">
         <button id="ingredient-search-button"class="btn">Search</button>
         <div id="ingredient-section">
-            <ul id="ingredient-list"></ul>
             <!-- use DOM to return ingredients and other information here-->
             <!-- also include Save To Meal Plan? functionality-->
         </div>
@@ -26,8 +25,9 @@
     <section class="what-meal bg-light container">
         <h3>What To Make?</h3>
         <input id="meal-search-text"placeholder="onion" type="text">
-        <button id="meal-search-button"class="btn">Search</button>
         <button id="add-ingredient-button"class="btn">Add Ingredient To Search</button>
+        <button id="meal-search-button"class="btn">Search</button>
+        <button id="meal-search-filters"class="btn">Search Preferences</button>
         <div id="meal-section" card ="container">
             <!-- use DOM to return meals and other information here-->
             <!-- also include Save To Meal Plan? functionality-->
@@ -205,6 +205,70 @@
                 </div>
             </div>
             
+        </div>
+    </div>
+
+    <div class="search-preferences">
+        <div class="search-preferences-bg">
+            <div class="search-preferences-selector">
+                <span class="search-close">X</span>
+                <form>
+                <div class="search-range">
+                    <h4>Search range:</h4>
+                </div>
+                <div class="meal-preferences">
+                    <h4>Meal preferences:</h4>
+                        <input type="checkbox" id="main course" name="main course" value="main%20course">
+                        <label for="main course">Main course</label>
+                        <input type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                        <label for="breakfast">Breakfast</label>
+                        <input type="checkbox" id="dessert" name="dessert" value="dessert">
+                        <label for="dessert">Dessert</label>
+                    
+                </div>
+                <div class="diet-preferences">
+                    <h4>Meal preferences:</h4>
+                        <input type="checkbox" id="ketogenic" name="ketogenic" value="ketogenic">
+                        <label for="ketogenic">Ketogenic</label>
+                        <input type="checkbox" id="vegetarian" name="vegetarian" value="vegetarian">
+                        <label for="vegetarian">Vegetarian</label>
+                        <input type="checkbox" id="vegan" name="vegan" value="vegan">
+                        <label for="vegan">Vegan</label>
+                        <input type="checkbox" id="pescetarian" name="pescetarian" value="pescetarian">
+                        <label for="pescetarian">Pescetarian</label>
+                        <input type="checkbox" id="paleo" name="paleo" value="paleo">
+                        <label for="paleo">Paleo</label>
+                </div>
+                <div class="intolerances">
+                    <h4>Intolerances:</h4>
+                        <input type="checkbox" id="dairy" name="dairy" value="dairy">
+                        <label for="dairy">Dairy</label>
+                        <input type="checkbox" id="peanut" name="peanut" value="peanut">
+                        <label for="peanut">Peanut</label>
+                        <input type="checkbox" id="soy" name="soy" value="soy">
+                        <label for="soy">Soy</label>
+                        <input type="checkbox" id="egg" name="egg" value="egg">
+                        <label for="egg">Egg</label>
+                        <input type="checkbox" id="seafood" name="seafood" value="seafood">
+                        <label for="seafood">Seafood</label>
+                        <input type="checkbox" id="sulfite" name="sulfite" value="sulfite">
+                        <label for="sulfite">Sulfite</label>
+                        <input type="checkbox" id="gluten" name="gluten" value="gluten">
+                        <label for="gluten">Gluten</label>
+                        <input type="checkbox" id="sesame" name="sesame" value="sesame">
+                        <label for="sesame">Sesame</label>
+                        <input type="checkbox" id="tree nut" name="tree nut" value="tree nut">
+                        <label for="tree nut">Tree Nut</label>
+                        <input type="checkbox" id="grain" name="grain" value="grain">
+                        <label for="grain">Grain</label>
+                        <input type="checkbox" id="shellfish" name="shellfish" value="shellfish">
+                        <label for="shellfish">Shellfish</label>
+                        <input type="checkbox" id="wheat" name="wheat" value="wheat">
+                        <label for="wheat">Wheat</label>
+                    </div>
+                <button class="save-preferences"type="submit">Save Changes</button>    
+                </form>
+            </div>
         </div>
     </div>
    

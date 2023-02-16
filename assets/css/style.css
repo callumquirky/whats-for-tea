@@ -10,7 +10,7 @@ header h2 {
     text-align: center;
 }
 
-.error-modal-bg, .mealplan-selector-bg {
+.error-modal-bg, .mealplan-selector-bg, .search-preferences-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -42,7 +42,7 @@ header h2 {
     
 }
 
-.mealplan-selector {
+.mealplan-selector, .search-preferences-selector {
     position: relative;
     width: 50vw;
     background-color: blueviolet;
@@ -56,7 +56,7 @@ header h2 {
     width:40%
 }
 
-.modal-close, .mealplan-selector-close{
+.modal-close, .mealplan-selector-close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -64,3 +64,6 @@ header h2 {
     cursor:pointer
 }
 
+.returned-meal {
+    cursor: pointer;
+}
