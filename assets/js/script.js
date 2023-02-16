@@ -143,7 +143,6 @@ function findMeals(){
 
 $('#mealPlanSubmit').on("click", function(){
     $('.mealplan-confirm').html("")
-    let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
     let dateSelect = $('#mealplan-date')
     let mealSelect = $('#mealplan-meal')
     let selectedDate = dateSelect.val()
@@ -175,17 +174,31 @@ $('#mealPlanSubmit').on("click", function(){
 })
 
 function setMeals() {
-    let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
-    console.log(savedMeals)
-    console.log(JSON.parse(localStorage.getItem('savedMeals')))
     for (let i = 0; i < savedMeals.length; i++) {
         $(`${savedMeals[i].mealSlot}-text`).text(savedMeals[i].text)
         $(`${savedMeals[i].mealSlot}-img`).attr("src", savedMeals[i].img)
-        let clearButton = $('<button>').attr("id", "clear-btn").text("Remove")
+        let clearButton = $('<button>').addClass("clear-btn").text("Remove")
         $(savedMeals[i].mealSlot).append(clearButton)
     }
 }
 
-$('#clear-btn').on("click", function(){
-    console.log($(this))
+$(document).on("click", ".clear-btn", function(event){
+    console.log("#"+$(this).parent())
+    console.log(savedMeals[0].mealSlot)
+    console.log("#"+$(this).parent()[0].id == savedMeals[0].mealSlot)
+    console.log(savedMeals[0])
+    for (let i = 0; i < savedMeals.length; i++) {
+        if("#"+$(this).parent()[0].id == savedMeals[i].mealSlot){
+            let indexRemove = savedMeals.map(input => input.mealSlot).indexOf(savedMeals.mealSlot)
+            console.log(indexRemove)
+            savedMeals.splice(indexRemove, 1)
+            localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
+            console.log($(this).parent()[i])
+            $(`#${$(this).parent()[i].id}-text`).html("")
+            $(`#${$(this).parent()[i].id}-img`).attr("src", "")
+            event.target.remove()
+            $(this).parent()[i]
+            setMeals()
+        }
+    }
 })
