@@ -3,6 +3,8 @@
 
 What's For Tea!? is a one stop application for organising your evening meals. The user can search by meal name to find ingredients, search by the available ingredients in their house to get suggestions on what to make, and then add the resulting meals to a mealplan to plan their week ahead. This app was built with HTML, CSS, JavaScript, jQuery, BootStrap, and the Spoonacular recipe API.
 
+![](assets/images/home.PNG)
+
 ## Deployed Application:
 
 Please enjoy the deployed application here: https://callumquirky.github.io/whats-for-tea/
