@@ -15,7 +15,7 @@ Please enjoy the deployed application here: https://callumquirky.github.io/whats
 
 The user can input the meal the user wants to make, and the page will return a list of available options. 
 
-![](assets/images/whats-for-tea-meal-selection)
+![](assets/images/whats-for-tea-meal-selection.PNG)
 Choose the one that looks best and view the list of ingredients!
 
 ![](assets/images/whats-for-tea-meal-ingredients-list.PNG)
