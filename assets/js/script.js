@@ -49,6 +49,7 @@ $('#meal-search-button').on("click", function(){
 // eventlistener to make add to mealplan form when the user clicks
 
 $(document).on("click", ".add-to-mealplan", function(){
+    $('.mealplan-confirm').empty()
     $('.mealplan-selector-bg').addClass("bg-active")
     $('#mealplan-selector-text').text($(this).parent().children()[0].innerHTML)
     $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
