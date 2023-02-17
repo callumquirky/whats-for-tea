@@ -49,17 +49,9 @@ $('#meal-search-button').on("click", function(){
 // eventlistener to make add to mealplan form when the user clicks
 
 $(document).on("click", ".add-to-mealplan", function(){
-    console.log($(this).parent().ch)
-    if ($(this).parent('div.big-returned-meal').length){
-        $('.mealplan-selector-bg').addClass("bg-active")
-        $('#mealplan-selector-text').text($(this).parent().children()[0].innerHTML)
-        $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
-    }
-    else{   
-        $('.mealplan-selector-bg').addClass("bg-active")
-        $('#mealplan-selector-text').text($(this).parent().children().children()[0].innerHTML)
-        $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
-    }
+    $('.mealplan-selector-bg').addClass("bg-active")
+    $('#mealplan-selector-text').text($(this).parent().children()[0].innerHTML)
+    $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
 })
  
 // eventlistener to close modals
