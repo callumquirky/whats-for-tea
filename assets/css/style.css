@@ -1,3 +1,6 @@
+header {
+    background-color:#CDB4DB;
+}
 header h2 {
     text-align: center;
 }
@@ -33,19 +36,35 @@ header h2 {
 
 .error-modal {
     position: relative;
-    width: 30%;
-    height: 30%;
-    background-color: red;
+    height: 10vh;
+    background-color: #FFC8DD;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    padding: 1vw;
 }
 
-.mealplan-selector, .search-preferences-selector {
+
+.search-preferences-selector {
     position: relative;
     width: 50vw;
-    background-color: blueviolet;
+    background-color: #FFC8DD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-preferences-selector, button {
+    justify-content: center;
+    align-items: center;
+}
+
+.mealplan-selector{
+    position: relative;
+    width: 40vw;
+    height: 60vh;
+    background-color: #FFC8DD;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,10 +72,39 @@ header h2 {
 }
 
 .mealplan-selector img {
-    width:40%
+    height: auto;
+    width: auto;
+    max-width: 60%;
+    max-height: 60%;
 }
 
-.modal-close, .mealplan-selector-close {
+.mealplan-formbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    padding: 1vw;
+}
+
+.mealplan-confirm{
+  
+}
+
+.mealplan-confirm h4 {
+    font-size: 1vh;
+}
+
+.mealplan-selector button {
+    margin: 0.5vh;
+}
+
+.mealplan-selector h4 {
+    font-size: 2.5vh;
+}
+
+
+.modal-close, .mealplan-selector-close, .search-close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -66,4 +114,106 @@ header h2 {
 
 .returned-meal {
     cursor: pointer;
+}
+
+.mealplan-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+    margin: 0.2vw;
+    resize: both;
+}
+
+.mealplan-div:nth-child(odd) {
+    background-color: #CDB4DB;
+}
+
+.mealplan-div:nth-child(even){
+    background-color: #FFAFCC;
+}
+
+.mealplan-div, h3, h4, h5 {
+    text-align:center
+}
+
+.mealplan-div, h3{
+    font-weight: bold;
+}
+
+.what-meal, .what-ingredient {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.what-meal{
+    background-color: #A2D2FF;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.what-ingredient{
+    background-color: #FFAFCC;
+}
+
+.mealplan {
+    margin-top: 1vh;
+}
+
+.returned-meal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1vh;
+    margin: 2vh;
+}
+
+.returned-meal, h4 {
+    font-size: 2.35vh;
+    font-weight: bold;
+
+}
+
+.returned-meal, img {
+    height: 20%;
+}
+
+.big-returned-meal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1vh;
+}
+
+.big-returned-meal img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.big-returned-meal li {
+    font-size: 1.8vh;
+}
+
+.big-returned-meal button {
+    background-color: #BDE0FE;
+}
+
+.big-returned-meal button:hover {
+    background-color: #CDB4DB;
+}
+
+
+
+.mealslot-div img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
