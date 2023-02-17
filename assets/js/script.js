@@ -211,12 +211,15 @@ function setMeals(meal) {
 $(document).on("click", ".clear-btn", function(event){
     for (let i = 0; i < savedMeals.length; i++) {
         console.log(savedMeals[i].mealSlot)
+        console.log(savedMeals[i])
         console.log($(this).parent([0]).attr("id"))
         if("#"+$(this).parent([0]).attr("id") == savedMeals[i].mealSlot){
-            let indexRemove = savedMeals.map(input => input.mealSlot).indexOf(savedMeals.mealSlot)
+            console.log([$(this).parent()])
+            console.log(savedMeals[i].mealSlot)
+            console.log(savedMeals[i])
+            let indexRemove = savedMeals.map(input => input.mealSlot).indexOf(savedMeals[i].mealSlot)
             savedMeals.splice(indexRemove, 1)
             localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
-            console.log([$(this).parent()])
             $(`#${$(this).parent([0]).attr("id")}-text`).empty()
             $(`#${$(this).parent([0]).attr("id")}-img`).attr("src", "")
             event.target.remove()
