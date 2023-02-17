@@ -54,6 +54,7 @@ After clicking save, the meal is added to a meal plan at the desired location:
 If the user's search term is empty or doesn't yield any results from the Spoonacular API, then the page returns one of two errors:
 
 Search term empty:
+
 ![](assets/images/whats-for-tea-search-error-empty.PNG)
 
 Search term no results:
