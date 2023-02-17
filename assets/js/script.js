@@ -2,7 +2,7 @@ let ingredSect =$('#ingredient-section')
 let ingredList = $('#ingredient-list')
 let ingredSearch =$('#ingredient-search-text').val()
 let searchIngreds = [];
-let spoonacularAPIKey = "26ca80bd388e4d61aafdcb35b171b6bc"
+let spoonacularAPIKey = "ec9c98c648e344fcb8def4b57bd6aede"
 let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ?? [];
 let mealPreference = [];
 let dietPreference =[];
@@ -210,15 +210,17 @@ function setMeals(meal) {
 
 $(document).on("click", ".clear-btn", function(event){
     for (let i = 0; i < savedMeals.length; i++) {
-        // if("#"+$(this).parent()[i].id == savedMeals[i].mealSlot){
+        console.log(savedMeals[i].mealSlot)
+        console.log($(this).parent([0]).attr("id"))
+        if("#"+$(this).parent([0]).attr("id") == savedMeals[i].mealSlot){
             let indexRemove = savedMeals.map(input => input.mealSlot).indexOf(savedMeals.mealSlot)
             savedMeals.splice(indexRemove, 1)
             localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
             console.log([$(this).parent()])
-            $(`#${$(this).parent()[i].id}-text`).empty()
-            $(`#${$(this).parent()[i].id}-img`).attr("src", "")
+            $(`#${$(this).parent([0]).attr("id")}-text`).empty()
+            $(`#${$(this).parent([0]).attr("id")}-img`).attr("src", "")
             event.target.remove()
-        // }
+        }
     }
 })
 
