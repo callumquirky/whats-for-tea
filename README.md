@@ -58,6 +58,7 @@ Search term empty:
 ![](assets/images/whats-for-tea-search-error-empty.PNG)
 
 Search term no results:
+
 ![](assets/images/whats-for-tea-search-error.PNG)
 
 # License
