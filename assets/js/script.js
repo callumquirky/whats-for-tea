@@ -183,7 +183,7 @@ $('#mealPlanSubmit').on("click", function(){
         setMeals()
         let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
         let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
-        confirmMessage.attr("class", 'confirm');
+        confirmMessage.addClass('confirm');
         confirmDiv.append(confirmMessage);
         $('.mealplan-selector').append(confirmDiv)
     }

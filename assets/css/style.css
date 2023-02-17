@@ -63,7 +63,7 @@ header h2 {
 .mealplan-selector{
     position: relative;
     width: 40vw;
-    height: 35vh;
+    height: 60vh;
     background-color: #FFC8DD;
     display: flex;
     justify-content: center;
@@ -209,9 +209,7 @@ header h2 {
     background-color: #CDB4DB;
 }
 
-.mealslot-div {
-    
-}
+
 
 .mealslot-div img {
     width: auto;
