@@ -44,13 +44,13 @@ $('#meal-search-filters').on("click", function(){
 
 $('#meal-search-button').on("click", function(){    
     findMeals()
-    console.log("yes")
 })
 
 // eventlistener to make add to mealplan form when the user clicks
 
 $(document).on("click", ".add-to-mealplan", function(){
-    if ($(this).parent('div#ingredient-section').length){
+    console.log($(this).parent().ch)
+    if ($(this).parent('div.big-returned-meal').length){
         $('.mealplan-selector-bg').addClass("bg-active")
         $('#mealplan-selector-text').text($(this).parent().children()[0].innerHTML)
         $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
@@ -79,18 +79,18 @@ function findIngredients(){
         url:queryURL,
         method:"GET"
     }).then(function(response){
-        console.log(response)
-        console.log(response.results)
         if (response.results.length == 0){
             searchError(ingredSearch)
         }
         else{
+            let returnedMealRow = $('<div>').addClass("returned-meal-row row")
             for (let i = 0; i < response.results.length; i++) {
-                let returnedMealDiv =$('<div>').addClass("returned-meal").attr("data-id", response.results[i].id)
+                let returnedMealDiv =$('<div>').addClass("returned-meal col").attr("data-id", response.results[i].id)
                 let mealName =$('<h4>').text(response.results[i].title)
                 let mealImg =$('<img>').attr("src", response.results[i].image)
                 returnedMealDiv.append(mealName, mealImg)
-                ingredSect.append(returnedMealDiv)
+                returnedMealRow.append(returnedMealDiv)
+                ingredSect.append(returnedMealRow)
             } 
         }
     })
@@ -104,7 +104,7 @@ $(document).on("click", ".returned-meal", function(){
         url: queryURL,
         method:"GET"
     }).then(function(response){
-        console.log(response)
+        let returnedMealDiv = $('<div>').addClass("big-returned-meal")
         let returnedMealName = $('<h4>').text(response.title)
         let returnedMealImg =$('<img>').attr("src", response.image)
         let ingredientUl = $('<ul>').addClass("ingredient-list")
@@ -113,7 +113,8 @@ $(document).on("click", ".returned-meal", function(){
             let ingredientText= $('<li>').text(`${response.extendedIngredients[i].name}: ${response.extendedIngredients[i].measures.metric.amount} ${response.extendedIngredients[i].measures.metric.unitShort}`)
             ingredientUl.append(ingredientText)
         }
-        ingredSect.append(returnedMealName, returnedMealImg, mealPlanButton, ingredientUl)
+        returnedMealDiv.append(returnedMealName, returnedMealImg, mealPlanButton, ingredientUl)
+        ingredSect.append(returnedMealDiv)
     })
 })
 
@@ -136,12 +137,7 @@ function searchError(search){
 
 function findMeals(){
     let searchRange = 5
-    console.log(mealPreference)
-    console.log(intolerancePreference)
-    console.log(dietPreference)
-    console.log(searchIngreds)
     let queryURL = "https://api.spoonacular.com/recipes/complexSearch"+"?includeIngredients="+searchIngreds+"&diet="+dietPreference+"&intolerances="+intolerancePreference+"&type="+mealPreference+"&apiKey="+spoonacularAPIKey
-    console.log(queryURL)
     $.ajax({
         url:queryURL,
         method:"GET"
@@ -150,19 +146,14 @@ function findMeals(){
             searchError(searchIngreds)
         }
         else{
-            console.log(response)
             for (let i = 0; i < response.results.length; i++) {
-                let cardCol = $('<div>').addClass("col-3 returned-meal").attr("data-id", response.results[i].id)
-                let mealCard = $('<div>').addClass("card")
-                let mealCardBody = $('<div>').addClass("card-body")
-                let mealTitleEl = $('<h5>').text(response.results[i].title).addClass("card-title");
-                let mealImageEl = $('<img>').attr("src", response.results[i].image).addClass("card-img-top")
+                let returnedMealRow = $('<div>').addClass("returned-meal-row row")
+                let cardCol = $('<div>').addClass("col returned-meal").attr("data-id", response.results[i].id)
+                let mealTitleEl = $('<h5>').text(response.results[i].title);
+                let mealImageEl = $('<img>').attr("src", response.results[i].image)
                 let mealPlanButton = $('<button>').text("Add To Meal-Plan?").addClass("add-to-mealplan")
-                mealCardBody.append(mealTitleEl)
-                mealCard.append(mealCardBody)
-                mealCard.append(mealImageEl)
-                mealCard.append(mealPlanButton)
-                cardCol.append(mealCard)
+                cardCol.append(mealTitleEl, mealImageEl, mealPlanButton)
+                returnedMealRow.append(cardCol)
                 $('#meal-card-row').append(cardCol)
             }
         }
@@ -233,24 +224,20 @@ let preferenceForm = $("form");
 
 preferenceForm.on("submit", function(event){
     event.preventDefault();
-    console.log($('input[type="checkbox"]'))
     for (let i = 0; i < 20; i++) {
         if(i<3){
             if($('input[type="checkbox"]')[i].checked){
                 mealPreference.push($('input[type="checkbox"]')[i].value)
-                console.log(mealPreference)
             }
         }
         else if(i>=3 && i<8){
             if ($('input[type="checkbox"]')[i].checked){
                 dietPreference.push($('input[type="checkbox"]')[i].value)
-                console.log(dietPreference)
             }
         }
         else if(i>=8){
             if ($('input[type="checkbox"]')[i].checked){
             intolerancePreference.push($('input[type="checkbox"]')[i].value)
-            console.log(intolerancePreference)
             }
         }    
         }

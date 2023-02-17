@@ -13,8 +13,9 @@
     <header>
         <h2>What's For Tea!?</h2>
     </header>
-    <section class="what-ingredient bg-light container">
+    <section class="what-ingredient container col-12">
         <h3>What do I need?</h3>
+        <p>Search by dish, then choose the most delicious looking to see the recipe!</p>
         <input id="ingredient-search-text"placeholder="Spaghetti Carbonara" type="text">
         <button id="ingredient-search-button"class="btn">Search</button>
         <div id="ingredient-section">
@@ -22,8 +23,9 @@
             <!-- also include Save To Meal Plan? functionality-->
         </div>
     </section>
-    <section class="what-meal bg-light container">
+    <section class="what-meal container col-12">
         <h3>What To Make?</h3>
+        <p>Add your ingredients to search list one at a time, specify search preferences, then go!</p>
         <input id="meal-search-text"placeholder="onion" type="text">
         <button id="add-ingredient-button"class="btn">Add Ingredient To Search</button>
         <button id="meal-search-button"class="btn">Search</button>
@@ -38,129 +40,129 @@
     </section>
     <section class="meal-plan bg-light container col-12">
         <div class="row">
-            <div class="monday col-sm">
+            <div class="monday col-md mealplan-div">
                 <h3>Monday</h3>
                 <div class="row">
-                    <div id="monday-breakfast">
+                    <div id="monday-breakfast" class="mealslot-div">
                         <h4>Breakfast</h4>
                         <h5 id="monday-breakfast-text"></h5>
                         <img src="" id="monday-breakfast-img">
                     </div>
-                    <div id="monday-lunch">
+                    <div id="monday-lunch" class="mealslot-div">
                         <h4>Lunch</h4>
                         <h5 id="monday-lunch-text"></h5>
                         <img src="" id="monday-lunch-img">
                     </div>
-                    <div id="monday-dinner">
+                    <div id="monday-dinner" class="mealslot-div">
                         <h4>Dinner</h4>
                         <h5 id="monday-dinner-text"></h5>
                         <img src="" id="monday-dinner-img">
                     </div>
                 </div>
             </div>
-            <div class="tuesday col-sm">
+            <div class="tuesday col-md mealplan-div">
                 <h3>Tuesday</h3>
-                <div id="tuesday-breakfast">
+                <div id="tuesday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="tuesday-breakfast-text"></h5>
                     <img src="" id="tuesday-breakfast-img">
                 </div>
-                <div id="tuesday-lunch">
+                <div id="tuesday-lunch class="mealslot-div"">
                     <h4>Lunch</h4>
                     <h5 id="tuesday-lunch-text"></h5>
                     <img src="" id="tuesday-lunch-img">
                 </div>
-                <div id="tuesday-dinner">
+                <div id="tuesday-dinner" class="mealslot-div">
                     <h4>Dinner</h4>
                     <h5 id="tuesday-dinner-text"></h5>
                     <img src="" id="tuesday-dinner-img"></div>
             </div>
-            <div class="wednesday col-sm">
+            <div class="wednesday col-md mealplan-div">
                 <h3>Wednesday</h3>
-                <div id="wednesday-breakfast">
+                <div id="wednesday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="wednesday-breakfast-text"></h5>
                     <img src="" id="wednesday-breakfast-img">
                 </div>
-                <div id="wednesday-lunch">
+                <div id="wednesday-lunch" class="mealslot-div">
                     <h4>Lunch</h4>
                     <h5 id="wednesday-lunch-text"></h5>
                     <img src="" id="wednesday-lunch-img">
                 </div>
                 <div id="wednesday-dinner">
-                    <div id="wednesday-dinner">
+                    <div id="wednesday-dinner" class="mealslot-div">
                         <h4>Dinner</h4>
                         <h5 id="wednesday-dinner-text"></h5>
                         <img src="" id="wednesday-dinner-img"></div>
                 </div>
             </div> 
-            <div class="thursday col-sm">
+            <div class="thursday col-md mealplan-div">
                 <h3>Thursday</h3>
-                <div id="thursday-breakfast">
+                <div id="thursday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="thursday-breakfast-text"></h5>
                     <img src="" id="thursday-breakfast-img">
                 </div>
-                <div id="thursday-lunch">
+                <div id="thursday-lunch" class="mealslot-div">
                     <h4>Lunch</h4>
                     <h5 id="thursday-lunch-text"></h5>
                     <img src="" id="thursday-lunch-img">
                 </div>
-                <div id="thursday-dinner">
+                <div id="thursday-dinner" class="mealslot-div">
                     <h4>Dinner</h4>
                     <h5 id="thursday-dinner-text"></h5>
                     <img src="" id="thursday-dinner-img">
                 </div>
             </div>
-            <div class="friday col-sm">
+            <div class="friday col-md mealplan-div">
                 <h3>Friday</h3>
-                <div id="friday-breakfast">
+                <div id="friday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="friday-breakfast-text"></h5>
                     <img src="" id="friday-breakfast-img">
                 </div>
-                <div id="friday-lunch">
+                <div id="friday-lunch" class="mealslot-div">
                     <h4>Lunch</h4>
                     <h5 id="friday-lunch-text"></h5>
                     <img src="" id="friday-lunch-img">
                 </div>
-                <div id="friday-dinner">
+                <div id="friday-dinner" class="mealslot-div">
                     <h4>Dinner</h4>
                     <h5 id="friday-dinner-text"></h5>
                     <img src="" id="friday-dinner-img">
                 </div>
             </div>
-            <div class="saturday col-sm">
+            <div class="saturday col-md mealplan-div">
                 <h3>Saturday</h3>
-                <div id="saturday-breakfast">
+                <div id="saturday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="saturday-breakfast-text"></h5>
                     <img src="" id="saturday-breakfast-img">
                 </div>
-                <div id="saturday-lunch">
+                <div id="saturday-lunch" class="mealslot-div">
                     <h4>Lunch</h4>
                     <h5 id="saturday-lunch-text"></h5>
                     <img src="" id="saturday-lunch-img">
                 </div>
-                <div id="saturday-dinner">
+                <div id="saturday-dinner" class="mealslot-div">
                     <h4>Dinner</h4>
                     <h5 id="saturday-dinner-text"></h5>
                     <img src="" id="saturday-dinner-img">
                 </div>
             </div>
-            <div class="sunday col-sm">
+            <div class="sunday col-md mealplan-div">
                 <h3>Sunday</h3>
-                <div id="sunday-breakfast">
+                <div id="sunday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="sunday-breakfast-text"></h5>
                     <img src="" id="sunday-breakfast-img">
                 </div>
-                <div id="sunday-lunch">
+                <div id="sunday-lunch" class="mealslot-div">
                     <h4>Lunch</h4>
                     <h5 id="sunday-lunch-text"></h5>
                     <img src="" id="sunday-lunch-img">
                 </div>
-                <div id="sunday-dinner">
+                <div id="sunday-dinner" class="mealslot-div">
                     <h4>Dinner</h4>
                     <h5 id="sunday-dinner-text"></h5>
                     <img src="" id="sunday-dinner-img">
