@@ -173,7 +173,7 @@ $('#mealPlanSubmit').on("click", function(){
     if(savedMeals.map(input => input.text).indexOf(savedMeal.text) && savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) == -1){
         savedMeals.push(savedMeal)
         localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
-        setMeals()
+        setMeals(savedMeal)
         let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
         let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
         confirmMessage.addClass('confirm');
@@ -190,26 +190,35 @@ $('#mealPlanSubmit').on("click", function(){
     
 })
 
-function setMeals() {
-    for (let i = 0; i < savedMeals.length; i++) {
-        $(`${savedMeals[i].mealSlot}-text`).text(savedMeals[i].text)
-        $(`${savedMeals[i].mealSlot}-img`).attr("src", savedMeals[i].img)
-        let clearButton = $('<button>').addClass("clear-btn").text("Remove")
-        $(savedMeals[i].mealSlot).append(clearButton)
+function setMeals(meal) {
+    if (meal == undefined){
+        for (let i = 0; i < savedMeals.length; i++) {
+            $(`${savedMeals[i].mealSlot}-text`).text(savedMeals[i].text)
+            $(`${savedMeals[i].mealSlot}-img`).attr("src", savedMeals[i].img)
+            let clearButton = $('<button>').addClass("clear-btn").text("Remove")
+            $(savedMeals[i].mealSlot).append(clearButton)
+        }
     }
+    else{
+        $(`${meal.mealSlot}-text`).text(meal.text)
+            $(`${meal.mealSlot}-img`).attr("src", meal.img)
+            let clearButton = $('<button>').addClass("clear-btn").text("Remove")
+            $(meal.mealSlot).append(clearButton)
+    }
+   
 }
 
 $(document).on("click", ".clear-btn", function(event){
     for (let i = 0; i < savedMeals.length; i++) {
-        if("#"+$(this).parent()[i].id == savedMeals[i].mealSlot){
+        // if("#"+$(this).parent()[i].id == savedMeals[i].mealSlot){
             let indexRemove = savedMeals.map(input => input.mealSlot).indexOf(savedMeals.mealSlot)
             savedMeals.splice(indexRemove, 1)
             localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
+            console.log([$(this).parent()])
             $(`#${$(this).parent()[i].id}-text`).empty()
             $(`#${$(this).parent()[i].id}-img`).attr("src", "")
             event.target.remove()
-            setMeals()
-        }
+        // }
     }
 })
 
