@@ -63,6 +63,11 @@ $(document).on("click", ".modal-close, .mealplan-selector-close, .search-close",
     $('.search-preferences-bg').removeClass("bg-active")
 })
 
+$('#clear-search').on("click", function(){
+    $('#meal-section').empty()
+    searchIngreds=[]
+})
+
 // function to search for ingredients by searching for a meal
 
 function findIngredients(){
