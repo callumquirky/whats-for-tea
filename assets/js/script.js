@@ -65,6 +65,7 @@ $(document).on("click", ".modal-close, .mealplan-selector-close, .search-close",
 
 $('#clear-search').on("click", function(){
     $('#meal-section').empty()
+    $('#meal-card-row').empty()
     searchIngreds=[]
 })
 
