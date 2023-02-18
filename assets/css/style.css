@@ -143,10 +143,6 @@ button:hover{
     cursor:pointer
 }
 
-.returned-meal {
-    cursor: pointer;
-}
-
 .mealplan-div {
     display: flex;
     flex-direction: column;
@@ -182,10 +178,6 @@ button:hover{
 }
 
 
-.row, h3 {
-    
-}
-
 .what-meal, .what-ingredient {
     display: flex;
     flex-direction: column;
@@ -211,16 +203,18 @@ button:hover{
     flex-direction: column;
     padding: 1vh;
     margin: 2vh;
+    cursor: pointer;
 }
 
-.returned-meal, h4 {
-    font-size: 2.35vh;
+.returned-meal h4 {
+    font-size: 2vh;
     font-weight: bold;
 
 }
 
-.returned-meal, img {
-    height: 20%;
+.returned-meal img {
+    height: 20vh;
+
 }
 
 .big-returned-meal {
