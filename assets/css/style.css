@@ -2,6 +2,10 @@ body {
     font-family: 'Work Sans', sans-serif;
 }
 
+::selection {
+    background-color: #CDB4DB;
+}
+
 header {
     background-color:#CDB4DB;
 }
@@ -179,6 +183,7 @@ button:hover{
     height: auto;
     max-width: 100%;
     max-height: 100%;
+    
 }
 
 
