@@ -1,3 +1,7 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+
 header {
     background-color:#CDB4DB;
 }
@@ -5,13 +9,43 @@ header h2 {
     text-align: center;
 }
 
+button {
+    margin: 3.5px;
+    margin-top: 1vh;
+    margin-right: 1vw;
+    background-color: #FFC8DD;
+}
+
+button:hover{
+    background-color: #FFAFCC;
+}
+
 .what-meal h3 {
     text-align: center;
+}
+
+#ingredient-search-button, .save-preferences button{
+    background-color: #BDE0FE;
+}
+
+#ingredient-search-button:hover{
+    background-color: #CDB4DB;
 }
 
 .what-ingredient h3 {
     text-align: center;
 }
+.save-preferences{
+    background-color: #BDE0FE;
+    justify-content: center;
+    
+}
+
+.save-preferences:hover{
+    background-color: #CDB4DB;
+}
+
+
 
 .error-modal-bg, .mealplan-selector-bg, .search-preferences-bg {
     position: fixed;
@@ -19,7 +53,7 @@ header h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,9 +121,6 @@ header h2 {
     padding: 1vw;
 }
 
-.mealplan-confirm{
-  
-}
 
 .mealplan-confirm h4 {
     font-size: 1vh;
@@ -119,11 +150,10 @@ header h2 {
 .mealplan-div {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: space-between;
+    justify-content: space-between;
     padding: 1vh;
     margin: 0.2vw;
-    resize: both;
 }
 
 .mealplan-div:nth-child(odd) {
@@ -138,8 +168,22 @@ header h2 {
     text-align:center
 }
 
-.mealplan-div, h3{
+.mealplan-div h3{
+    position: relative;
+    top: -5px;
     font-weight: bold;
+}
+
+.mealslot-div img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.row, h3 {
+    
 }
 
 .what-meal, .what-ingredient {
@@ -149,6 +193,7 @@ header h2 {
     align-items: center;
 }
 
+
 .what-meal{
     background-color: #A2D2FF;
     margin-top: 1vh;
@@ -157,10 +202,6 @@ header h2 {
 
 .what-ingredient{
     background-color: #FFAFCC;
-}
-
-.mealplan {
-    margin-top: 1vh;
 }
 
 .returned-meal {
@@ -211,9 +252,3 @@ header h2 {
 
 
 
-.mealslot-div img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-}
