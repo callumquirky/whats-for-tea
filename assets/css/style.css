@@ -1,3 +1,7 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+
 header {
     background-color:#CDB4DB;
 }
@@ -5,13 +9,43 @@ header h2 {
     text-align: center;
 }
 
+button {
+    margin: 3.5px;
+    margin-top: 1vh;
+    margin-right: 1vw;
+    background-color: #FFC8DD;
+}
+
+button:hover{
+    background-color: #FFAFCC;
+}
+
 .what-meal h3 {
     text-align: center;
+}
+
+#ingredient-search-button, .save-preferences button{
+    background-color: #BDE0FE;
+}
+
+#ingredient-search-button:hover{
+    background-color: #CDB4DB;
 }
 
 .what-ingredient h3 {
     text-align: center;
 }
+.save-preferences{
+    background-color: #BDE0FE;
+    justify-content: center;
+    
+}
+
+.save-preferences:hover{
+    background-color: #CDB4DB;
+}
+
+
 
 .error-modal-bg, .mealplan-selector-bg, .search-preferences-bg {
     position: fixed;
@@ -19,7 +53,7 @@ header h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,7 +83,7 @@ header h2 {
     position: relative;
     width: 50vw;
     background-color: #FFC8DD;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -58,6 +92,10 @@ header h2 {
 .search-preferences-selector, button {
     justify-content: center;
     align-items: center;
+}
+
+.search-preferences-selector form {
+    text-align: center;
 }
 
 .mealplan-selector{
@@ -87,9 +125,6 @@ header h2 {
     padding: 1vw;
 }
 
-.mealplan-confirm{
-  
-}
 
 .mealplan-confirm h4 {
     font-size: 1vh;
@@ -112,18 +147,13 @@ header h2 {
     cursor:pointer
 }
 
-.returned-meal {
-    cursor: pointer;
-}
-
 .mealplan-div {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: space-between;
+    justify-content: space-between;
     padding: 1vh;
     margin: 0.2vw;
-    resize: both;
 }
 
 .mealplan-div:nth-child(odd) {
@@ -138,9 +168,19 @@ header h2 {
     text-align:center
 }
 
-.mealplan-div, h3{
+.mealplan-div h3{
+    position: relative;
+    top: -5px;
     font-weight: bold;
 }
+
+.mealslot-div img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
 
 .what-meal, .what-ingredient {
     display: flex;
@@ -148,6 +188,7 @@ header h2 {
     justify-content: center;
     align-items: center;
 }
+
 
 .what-meal{
     background-color: #A2D2FF;
@@ -158,9 +199,14 @@ header h2 {
 .what-ingredient{
     background-color: #FFAFCC;
 }
+.ingredient-list {
+    margin: 5px;
+}
 
-.mealplan {
-    margin-top: 1vh;
+.ingredient-list li {
+    margin: 3px;
+    background-color: #A2D2FF;
+    list-style: none;
 }
 
 .returned-meal {
@@ -170,16 +216,30 @@ header h2 {
     flex-direction: column;
     padding: 1vh;
     margin: 2vh;
+    cursor: pointer;
 }
 
-.returned-meal, h4 {
-    font-size: 2.35vh;
+.returned-meal:hover{
+    background-color: #CDB4DB;
+}
+
+.returned-meal h4 {
+    font-size: 2vh;
     font-weight: bold;
 
 }
 
-.returned-meal, img {
-    height: 20%;
+.returned-meal img {
+    height: 20vh;
+    border: 3px solid #A2D2FF;
+}
+
+.blue-returned-meal img{
+    border: 3px solid #FFAFCC;
+}
+
+.blue-returned-meal:hover{
+    background-color: #CDB4DB;
 }
 
 .big-returned-meal {
@@ -195,6 +255,7 @@ header h2 {
     height: auto;
     max-width: 100%;
     max-height: 100%;
+    border: 3px solid #A2D2FF;
 }
 
 .big-returned-meal li {
@@ -211,9 +272,3 @@ header h2 {
 
 
 
-.mealslot-div img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-}

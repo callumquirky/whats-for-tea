@@ -141,13 +141,14 @@ function findMeals(){
         else{
             for (let i = 0; i < response.results.length; i++) {
                 let returnedMealRow = $('<div>').addClass("returned-meal-row row")
-                let cardCol = $('<div>').addClass("col returned-meal").attr("data-id", response.results[i].id)
+                let cardCol = $('<div>').addClass("col returned-meal blue-returned-meal").attr("data-id", response.results[i].id)
                 let mealTitleEl = $('<h5>').text(response.results[i].title);
                 let mealImageEl = $('<img>').attr("src", response.results[i].image)
                 let mealPlanButton = $('<button>').text("Add To Meal-Plan?").addClass("add-to-mealplan")
                 cardCol.append(mealTitleEl, mealImageEl, mealPlanButton)
                 returnedMealRow.append(cardCol)
                 $('#meal-card-row').append(cardCol)
+                
             }
         }
         
