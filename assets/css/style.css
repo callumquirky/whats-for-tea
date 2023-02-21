@@ -17,18 +17,24 @@ button {
     margin: 3.5px;
     margin-top: 1vh;
     margin-right: 1vw;
+    height: 3vh;
     background-color: #FFC8DD;
+    text-align: center;
 }
 
 button:hover{
     background-color: #FFAFCC;
 }
 
-.what-meal h3 {
+.blue-clear-search{
+    margin: 3.5px;
+    margin-top: 1vh;
+    margin-right: 1vw;
+    height: 3vh;
     text-align: center;
 }
 
-#ingredient-search-button, .save-preferences button{
+#ingredient-search-button, .save-preferences button, .blue-clear-search, #mealPlanSubmit{
     background-color: #BDE0FE;
 }
 
@@ -36,9 +42,7 @@ button:hover{
     background-color: #CDB4DB;
 }
 
-.what-ingredient h3 {
-    text-align: center;
-}
+
 .save-preferences{
     background-color: #BDE0FE;
     justify-content: center;
@@ -49,7 +53,13 @@ button:hover{
     background-color: #CDB4DB;
 }
 
+.what-meal h3 {
+    text-align: center;
+}
 
+.what-ingredient h3 {
+    text-align: center;
+}
 
 .error-modal-bg, .mealplan-selector-bg, .search-preferences-bg {
     position: fixed;
@@ -104,8 +114,10 @@ button:hover{
 
 .mealplan-selector{
     position: relative;
-    width: 40vw;
-    height: 60vh;
+    width: auto;
+    height: auto;
+    max-width: 60vh;
+    max-height: 60vh;
     background-color: #FFC8DD;
     display: flex;
     justify-content: center;

@@ -43,7 +43,13 @@ $('#meal-search-filters').on("click", function(){
 
 
 $('#meal-search-button').on("click", function(){    
-    findMeals()
+    if(searchIngreds.length == 0){
+        console.log(searchIngreds)
+        searchError(searchIngreds)
+    }
+    else{
+        findMeals()
+    }
 })
 
 // eventlistener to make add to mealplan form when the user clicks
@@ -61,6 +67,18 @@ $(document).on("click", ".modal-close, .mealplan-selector-close, .search-close",
     $('.mealplan-selector-bg').removeClass("bg-active")
     $('.error-modal-bg').removeClass("bg-active")
     $('.search-preferences-bg').removeClass("bg-active")
+})
+
+$('.blue-clear-search').on("click", function(){
+    $('#ingredient-section').empty()
+})
+
+$('.clear-search').on("click", function(){
+    $('#meal-card-row').empty()
+    $('#meal-section').empty()
+    searchIngreds=[]
+    searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(",")}`)
+    $('#meal-section').append(searchIngredsEl)
 })
 
 // function to search for ingredients by searching for a meal
@@ -114,7 +132,7 @@ $(document).on("click", ".returned-meal", function(){
 // function to run an error message when the search comes empty
 
 function searchError(search){
-    if (search === "" || search == undefined){
+    if (search === "" || search == undefined || search.length == 0){
         $('.error-modal-text').text(`Oops! Your search term is empty!`)
         $('.error-modal-bg').addClass("bg-active")
     }
@@ -129,13 +147,13 @@ function searchError(search){
 // function to search for meals by ingredients
 
 function findMeals(){
-    let searchRange = 5
     let queryURL = "https://api.spoonacular.com/recipes/complexSearch"+"?includeIngredients="+searchIngreds+"&diet="+dietPreference+"&intolerances="+intolerancePreference+"&type="+mealPreference+"&apiKey="+spoonacularAPIKey
     $.ajax({
         url:queryURL,
         method:"GET"
     }).then(function(response){
-        if (response.length == 0){
+        console.log(response)
+        if (response.results.length == 0){
             searchError(searchIngreds)
         }
         else{

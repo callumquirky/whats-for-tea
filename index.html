@@ -18,7 +18,10 @@
         <h3>What do I need?</h3>
         <p>Search by dish, then choose the most delicious looking to see the recipe!</p>
         <input id="ingredient-search-text"placeholder="Spaghetti Carbonara" type="text">
-        <button id="ingredient-search-button">Search</button>
+        <div class="row">
+            <button class="col blue-clear-search"id="ingredient-search-button">Search</button>
+            <button class="col blue-clear-search">Clear</button></div>
+        </div>
         <div id="ingredient-section">
             <!-- use DOM to return ingredients and other information here-->
             <!-- also include Save To Meal Plan? functionality-->
@@ -29,7 +32,9 @@
         <p>Add your ingredients to search list one at a time, specify search preferences, then go!</p>
         <input id="meal-search-text"placeholder="onion" type="text">
         <button id="add-ingredient-button">Add Ingredient To Search</button>
-        <button id="meal-search-button">Search</button>
+        <div class="row">
+            <button class="col" id="meal-search-button">Search</button>
+            <button class="col clear-search">Clear</button></div>
         <button id="meal-search-filters">Search Preferences</button>
         <div id="meal-section" card ="container">
             <!-- use DOM to return meals and other information here-->
