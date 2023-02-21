@@ -29,7 +29,7 @@ button:hover{
     text-align: center;
 }
 
-#ingredient-search-button, .save-preferences button{
+#ingredient-search-button, .save-preferences button, .blue-clear-search{
     background-color: #BDE0FE;
 }
 
