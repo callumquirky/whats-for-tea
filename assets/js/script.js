@@ -54,7 +54,8 @@ $('#meal-search-button').on("click", function(){
 
 // eventlistener to make add to mealplan form when the user clicks
 
-$(document).on("click", ".add-to-mealplan", function(){
+$(document).on("click", ".add-to-mealplan", function(event){
+    event.stopPropagation()
     $('.mealplan-confirm').empty()
     $('.mealplan-selector-bg').addClass("bg-active")
     $('#mealplan-selector-text').text($(this).parent().children()[0].innerHTML)
@@ -188,8 +189,13 @@ $('#mealPlanSubmit').on("click", function(){
         img: $(this).parent().parent()[0].children[1].currentSrc,
         mealSlot: "#"+selectedDate+"-"+selectedMeal
     }
-    
-    if(savedMeals.map(input => input.text).indexOf(savedMeal.text) && savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) == -1){
+    console.log(savedMeal)
+    console.log(savedMeals)
+    console.log(savedMeals.map(input => input.text).indexOf(savedMeal.text))
+    console.log(savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot))
+    console.log(savedMeals.map(input => input.text).indexOf(savedMeal.text) && savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot))
+    if(savedMeals.map(input => input.text).indexOf(savedMeal.text) || savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) == -1){
+
         savedMeals.push(savedMeal)
         localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
         setMeals(savedMeal)
