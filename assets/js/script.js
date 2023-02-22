@@ -193,9 +193,7 @@ $('#mealPlanSubmit').on("click", function(){
     console.log(savedMeals)
     console.log(savedMeals.map(input => input.text).indexOf(savedMeal.text))
     console.log(savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot))
-    console.log(savedMeals.map(input => input.text).indexOf(savedMeal.text) && savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot))
-    if(savedMeals.map(input => input.text).indexOf(savedMeal.text) || savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) == -1){
-
+    if (savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) == -1){
         savedMeals.push(savedMeal)
         localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
         setMeals(savedMeal)
@@ -205,15 +203,29 @@ $('#mealPlanSubmit').on("click", function(){
         confirmDiv.append(confirmMessage);
         $('.mealplan-selector').append(confirmDiv)
     }
-    else {
-        let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
-        let confirmMessage = $('<h4>').text(`Oops, you're already having ${savedMeal.text} for ${$("#mealplan-meal :selected").text()} on ${$("#mealplan-date :selected").text()}!`)
-        confirmMessage.attr("class", 'confirm');
-        $(confirmDiv).append(confirmMessage);
-        $('.mealplan-selector').append(confirmDiv)
+    else if (savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) > -1){
+        const duplicateMealSlotIndex = savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot)
+        if (savedMeals[duplicateMealSlotIndex].text == savedMeal.text){
+            let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
+            let confirmMessage = $('<h4>').text(`Oops, you're already having ${savedMeal.text} for ${$("#mealplan-meal :selected").text()} on ${$("#mealplan-date :selected").text()}!`)
+            confirmMessage.attr("class", 'confirm');
+            $(confirmDiv).append(confirmMessage);
+            $('.mealplan-selector').append(confirmDiv)    
+        }
+        else{
+            savedMeals.splice(duplicateMealSlotIndex, 1)
+            savedMeals.push(savedMeal)
+            localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
+            setMeals(savedMeal)
+            let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
+            let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
+            confirmMessage.addClass('confirm');
+            confirmDiv.append(confirmMessage);
+            $('.mealplan-selector').append(confirmDiv)
+        }
+        }
     }
-    
-})
+)
 
 function setMeals(meal) {
     if (meal == undefined){
@@ -226,9 +238,16 @@ function setMeals(meal) {
     }
     else{
         $(`${meal.mealSlot}-text`).text(meal.text)
-            $(`${meal.mealSlot}-img`).attr("src", meal.img)
+        $(`${meal.mealSlot}-img`).attr("src", meal.img)
+        console.log($(meal.mealSlot.childNodes).length)
+        console.log($(meal.mealSlot[0].childNodes).length)
+        if ($(meal.mealSlot).find(".clear-btn").length > 0){
+            return;
+        }
+        else {
             let clearButton = $('<button>').addClass("clear-btn").text("Remove")
             $(meal.mealSlot).append(clearButton)
+        }
     }
    
 }
