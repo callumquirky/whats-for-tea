@@ -44,10 +44,10 @@ $('#meal-search-filters').on("click", function(){
 
 $('#meal-search-button').on("click", function(){    
     if(searchIngreds.length == 0){
-        console.log(searchIngreds)
         searchError(searchIngreds)
     }
     else{
+        $('#meal-card-row').empty()
         findMeals()
     }
 })
@@ -170,7 +170,6 @@ function findMeals(){
                 
             }
         }
-        
     })
 
 }
