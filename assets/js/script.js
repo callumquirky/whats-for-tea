@@ -30,7 +30,7 @@ $('#ingredient-search-button').on("click", function(event){
 $('#add-ingredient-button').on("click", function(){
     searchIngreds.push($('#meal-search-text').val()+",")
     $('#meal-section').empty()
-    let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(",")}`)
+    let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds}`)
     $('#meal-section').append(searchIngredsEl)
 })
 
