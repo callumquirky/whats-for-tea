@@ -29,7 +29,6 @@ $('#ingredient-search-button').on("click", function(event){
 // makes a list of ingredients that the user would like to search by for meals
 $('#add-ingredient-button').on("click", function(){
     searchIngreds.push($('#meal-search-text').val())
-    console.log(searchIngreds)
     $('#meal-section').empty()
     let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(", ")}`)
     $('#meal-section').append(searchIngredsEl)
@@ -151,12 +150,10 @@ function searchError(search){
 
 function findMeals(){
     let queryURL = "https://api.spoonacular.com/recipes/complexSearch"+"?includeIngredients="+searchIngreds+"&diet="+dietPreference+"&intolerances="+intolerancePreference+"&type="+mealPreference+"&apiKey="+spoonacularAPIKey
-    console.log(queryURL)
     $.ajax({
         url:queryURL,
         method:"GET"
     }).then(function(response){
-        console.log(response)
         if (response.results.length == 0){
             searchError(searchIngreds)
         }
