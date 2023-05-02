@@ -297,5 +297,6 @@ button:hover{
     background-color: #CDB4DB;
 }
 
-
-
+.hide {
+    display: none;
+}

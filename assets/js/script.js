@@ -282,3 +282,14 @@ preferenceForm.on("submit", function(event){
     $('.search-preferences-bg').removeClass("bg-active")
     }
 )
+
+// button to show/hide mealplan
+
+$("#mealplan-visible").on("click", function(){
+    if($(".mealplan-row").hasClass("hide")){
+        $(".mealplan-row").removeClass("hide")
+    }
+    else {
+        $(".mealplan-row").addClass("hide")
+    }
+})
