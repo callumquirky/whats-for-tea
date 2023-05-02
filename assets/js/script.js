@@ -30,7 +30,7 @@ $('#ingredient-search-button').on("click", function(event){
 $('#add-ingredient-button').on("click", function(){
     searchIngreds.push($('#meal-search-text').val()+",")
     $('#meal-section').empty()
-    let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(",")}`)
+    let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds}`)
     $('#meal-section').append(searchIngredsEl)
 })
 
@@ -153,7 +153,6 @@ function findMeals(){
         url:queryURL,
         method:"GET"
     }).then(function(response){
-        console.log(response)
         if (response.results.length == 0){
             searchError(searchIngreds)
         }
@@ -188,10 +187,6 @@ $('#mealPlanSubmit').on("click", function(){
         img: $(this).parent().parent()[0].children[1].currentSrc,
         mealSlot: "#"+selectedDate+"-"+selectedMeal
     }
-    console.log(savedMeal)
-    console.log(savedMeals)
-    console.log(savedMeals.map(input => input.text).indexOf(savedMeal.text))
-    console.log(savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot))
     if (savedMeals.map(input => input.mealSlot).indexOf(savedMeal.mealSlot) == -1){
         savedMeals.push(savedMeal)
         localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
@@ -238,8 +233,6 @@ function setMeals(meal) {
     else{
         $(`${meal.mealSlot}-text`).text(meal.text)
         $(`${meal.mealSlot}-img`).attr("src", meal.img)
-        console.log($(meal.mealSlot.childNodes).length)
-        console.log($(meal.mealSlot[0].childNodes).length)
         if ($(meal.mealSlot).find(".clear-btn").length > 0){
             return;
         }
@@ -253,13 +246,7 @@ function setMeals(meal) {
 
 $(document).on("click", ".clear-btn", function(event){
     for (let i = 0; i < savedMeals.length; i++) {
-        console.log(savedMeals[i].mealSlot)
-        console.log(savedMeals[i])
-        console.log($(this).parent([0]).attr("id"))
         if("#"+$(this).parent([0]).attr("id") == savedMeals[i].mealSlot){
-            console.log([$(this).parent()])
-            console.log(savedMeals[i].mealSlot)
-            console.log(savedMeals[i])
             let indexRemove = savedMeals.map(input => input.mealSlot).indexOf(savedMeals[i].mealSlot)
             savedMeals.splice(indexRemove, 1)
             localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
