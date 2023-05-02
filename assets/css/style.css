@@ -11,6 +11,7 @@ header {
 }
 header h2 {
     text-align: center;
+    font-weight: bold;
 }
 
 
@@ -108,7 +109,7 @@ button:hover{
     border: 3px solid #A2D2FF;
 }
 
-.search-preferences-selector .error-modal  .mealplan-selector, h4 {
+.search-preferences-selector h4, .error-modal h4,  .mealplan-selector h4{
     font-weight: bold;
 }
 
