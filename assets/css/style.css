@@ -13,13 +13,13 @@ header h2 {
     text-align: center;
 }
 
+
 button {
     margin: 3.5px;
     margin-top: 1vh;
     margin-right: 1vw;
     height: 3vh;
     background-color: #FFC8DD;
-    text-align: center;
 }
 
 button:hover{
@@ -101,6 +101,15 @@ button:hover{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 1vw;
+}
+
+.search-preferences-selector, .error-modal,  .mealplan-selector {
+    border: 3px solid #A2D2FF;
+}
+
+.search-preferences-selector .error-modal  .mealplan-selector, h4 {
+    font-weight: bold;
 }
 
 .search-preferences-selector, button {
@@ -114,10 +123,8 @@ button:hover{
 
 .mealplan-selector{
     position: relative;
-    width: auto;
-    height: auto;
-    max-width: 60vh;
-    max-height: 60vh;
+    width: 60vh;
+    height: 50vh;
     background-color: #FFC8DD;
     display: flex;
     justify-content: center;
@@ -126,10 +133,8 @@ button:hover{
 }
 
 .mealplan-selector img {
-    height: auto;
-    width: auto;
-    max-width: 60%;
-    max-height: 60%;
+    height: 50%;
+    width: 60%;
 }
 
 .mealplan-formbox {
