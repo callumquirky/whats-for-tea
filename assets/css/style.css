@@ -17,6 +17,10 @@ header {
     background-color: var(--purple);
 }
 
+h5{
+    font-size: 1vw;
+}
+
 .navbar {
     height: 7.5vh;
     display: flex;
@@ -260,6 +264,7 @@ button:hover{
     height: auto;
     max-width: 100%;
     max-height: 100%;
+    border: 3px solid var(--purple);
 }
 
 
@@ -314,6 +319,11 @@ button:hover{
     padding: 1vh;
     margin: 2vh;
     cursor: pointer;
+}
+
+.returned-meal h5 {
+    font-weight: bold;
+    font-size: 1.35vw;
 }
 
 .returned-meal:hover{
