@@ -17,13 +17,13 @@
             <a href="#" class="nav-logo">What's For Tea!?</a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Search for Recipes</a>
+                    <a href="#" class="nav-link">What do I need?</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Search by Ingredient</a>
+                    <a href="#" class="nav-link">What to make?</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Meal Planner</a>
+                    <a href="#" class="nav-link">Meal Plan</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -35,25 +35,20 @@
             
         </nav>
     </header>
-    
-    <section class="welcome-container">
-        <h2>welcome-container</h2>
-    </section>
-    <section class="what-ingredient container col-12">
-        <h3>What do I need?</h3>
+    <section class="what-ingredient container-fluid col">
+        <h2>What do I need?</h2>
         <p>Search by dish, then choose the most delicious looking to see the recipe!</p>
-        <input id="ingredient-search-text"placeholder="Spaghetti Carbonara" type="text">
+        <input id="ingredient-search-text"placeholder="Carbonara" type="text">
         <div class="row">
             <button class="col blue-clear-search"id="ingredient-search-button">Search</button>
             <button class="col blue-clear-search">Clear</button></div>
         </div>
         <div id="ingredient-section">
-            <!-- use DOM to return ingredients and other information here-->
-            <!-- also include Save To Meal Plan? functionality-->
+            <!--return ingredients and other information here-->
         </div>
     </section>
-    <section class="what-meal container col-12">
-        <h3>What To Make?</h3>
+    <section class="what-meal container-fluid col">
+        <h2>What to make?</h2>
         <p>Add your ingredients to search list one at a time, specify search preferences, then go!</p>
         <input id="meal-search-text"placeholder="onion" type="text">
         <button id="add-ingredient-button">Add Ingredient To Search</button>
@@ -62,17 +57,17 @@
             <button class="col clear-search">Clear</button></div>
         <button id="meal-search-filters">Search Preferences</button>
         <div id="meal-section" card ="container">
-            <!-- use DOM to return meals and other information here-->
-            <!-- also include Save To Meal Plan? functionality-->
+            <!-- return meals and other information here-->
         </div>
         <div class="container">
             <div id="meal-card-row" class="row"></div>
         </div>
     </section>
-    <section class="meal-plan bg-light container col-12">
-        <h3>Meal Plan</h3>
+    <section class="meal-plan bg-light container-fluid col">
+        <h2>Meal Plan</h2>
+        <p>Your meals for the week! Add to meal plan by finding something tasty in "What do I need" or "What to make?"</p>
         <button id="mealplan-visible">Show/Hide</button>
-        <div class="row mealplan-row">
+        <div class="row container-fluid mealplan-row hide">
             <div class="monday col-md mealplan-div">
                 <h3>Mon</h3>
                 <div id="monday-breakfast" class="mealslot-div">

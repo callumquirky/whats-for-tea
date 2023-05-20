@@ -18,7 +18,7 @@ header {
 }
 
 .navbar {
-    min-height: 7vh;
+    height: 7.5vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,16 +33,8 @@ header {
 }
 
 .nav-logo {
-    font-size: 3vw;
+    font-size: 2.75vw;
     font-weight: bold;
-}
-
-nav {
-    /* overflow: hidden;
-    width: 100vw;
-    height: 7.5vh;
-    position: fixed;
-    top: 0; */
 }
 
 .nav-menu li {
@@ -50,24 +42,19 @@ nav {
 }
 
 nav a {
-    /* /* float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 5px 15px; */
     text-decoration: none;
     color: black;
-    /* font-size: 2.25vw;
-    transition: background-color linear 0.35s;  */
 }
 
 .nav-link {
     float: left;
     transition: ease 0.5s;
+    font-size: 1.5vw;
+    padding-top: 2.5vh;
 }
 
 .nav-link:hover {
-    background-color: var(--pink);
+    color: white;
 }
 
 .hamburger {
@@ -113,7 +100,7 @@ button:hover{
     background-color: var(--blue);
 }
 
-#ingredient-search-button:hover{
+#ingredient-search-button:hover, .blue-clear-search:hover{
     background-color: var(--purple);
 }
 
@@ -128,11 +115,8 @@ button:hover{
     background-color: var(--purple);
 }
 
-.what-meal h3 {
-    text-align: center;
-}
 
-.what-ingredient h3 {
+.what-ingredient h2, .what-meal h2 {
     text-align: center;
 }
 
@@ -278,11 +262,13 @@ button:hover{
 }
 
 
-.what-meal, .what-ingredient {
+.what-meal, .what-ingredient, .meal-plan {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    width: 95vw;
+    padding: 10px 5px;
 }
 
 
@@ -290,9 +276,12 @@ button:hover{
     background-color: var(--blue);
     margin-top: 1vh;
     margin-bottom: 1vh;
+    min-height: 32.5vh;
 }
 
 .what-ingredient{
+    margin-top: 5vh;
+    min-height: 22.5vh;
     background-color: var(--pink);
 }
 .ingredient-list {
@@ -372,10 +361,6 @@ button:hover{
 
 #mealplan-selector-img {
     border: 3px solid var(--blue);
-}
-
-.welcome-container {
-    margin-top: 7.5vh;
 }
 
 @media only screen and (max-width:768px) {
