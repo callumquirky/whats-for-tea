@@ -2,12 +2,18 @@ body {
     font-family: 'Work Sans', sans-serif;
 }
 
+:root {
+    --blue: #BDE0FE;
+    --pink: #FFC8DD;
+    --purple: #CDB4DB;
+}
+
 ::selection {
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 nav {
-    background-color:#CDB4DB;
+    background-color: var(--purple);
     overflow: hidden;
     width: 100vw;
     height: 7.5vh;
@@ -25,6 +31,9 @@ nav a {
     font-size: 2.25vw;
 }
 
+nav a:hover {
+    background-color: var(--purple);
+}
 
 .logo {
     font-size: 3vw;
@@ -41,7 +50,7 @@ button {
     margin-top: 1vh;
     margin-right: 1vw;
     height: 3vh;
-    background-color: #FFC8DD;
+    background-color: var(--pink);
 }
 
 button:hover{
@@ -57,22 +66,22 @@ button:hover{
 }
 
 #ingredient-search-button, .save-preferences button, .blue-clear-search, #mealPlanSubmit{
-    background-color: #BDE0FE;
+    background-color: var(--blue);
 }
 
 #ingredient-search-button:hover{
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 
 .save-preferences{
-    background-color: #BDE0FE;
+    background-color: var(--blue);
     justify-content: center;
     
 }
 
 .save-preferences:hover{
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 .what-meal h3 {
@@ -107,7 +116,7 @@ button:hover{
 .error-modal {
     position: relative;
     height: 10vh;
-    background-color: #FFC8DD;
+    background-color: var(--pink);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,7 +127,7 @@ button:hover{
 .search-preferences-selector {
     position: relative;
     width: 50vw;
-    background-color: #FFC8DD;
+    background-color: var(--pink);
     display: block;
     justify-content: center;
     align-items: center;
@@ -127,7 +136,7 @@ button:hover{
 }
 
 .search-preferences-selector, .error-modal,  .mealplan-selector {
-    border: 3px solid #A2D2FF;
+    border: 3px solid var(--blue);
 }
 
 .search-preferences-selector h4, .error-modal h4,  .mealplan-selector h4{
@@ -147,7 +156,7 @@ button:hover{
     position: relative;
     width: 60vh;
     height: 50vh;
-    background-color: #FFC8DD;
+    background-color: var(--pink);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -200,11 +209,11 @@ button:hover{
 }
 
 .mealplan-div:nth-child(odd) {
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 .mealplan-div:nth-child(even){
-    background-color: #FFAFCC;
+    background-color: var(--pink);
 }
 
 .mealplan-div, h3, h4, h5 {
@@ -222,7 +231,6 @@ button:hover{
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    
 }
 
 
@@ -235,13 +243,13 @@ button:hover{
 
 
 .what-meal{
-    background-color: #A2D2FF;
+    background-color: var(--blue);
     margin-top: 1vh;
     margin-bottom: 1vh;
 }
 
 .what-ingredient{
-    background-color: #FFAFCC;
+    background-color: var(--pink);
 }
 .ingredient-list {
     margin: 5px;
@@ -249,7 +257,7 @@ button:hover{
 
 .ingredient-list li {
     margin: 3px;
-    background-color: #A2D2FF;
+    background-color: var(--blue);
     list-style: none;
 }
 
@@ -264,7 +272,7 @@ button:hover{
 }
 
 .returned-meal:hover{
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 .returned-meal h4 {
@@ -275,15 +283,15 @@ button:hover{
 
 .returned-meal img {
     height: 20vh;
-    border: 3px solid #A2D2FF;
+    border: 3px solid var(--blue);
 }
 
 .blue-returned-meal img{
-    border: 3px solid #FFAFCC;
+    border: 3px solid var(--pink);
 }
 
 .blue-returned-meal:hover{
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 .big-returned-meal {
@@ -299,7 +307,7 @@ button:hover{
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    border: 3px solid #A2D2FF;
+    border: 3px solid var(--blue);
 }
 
 .big-returned-meal li {
@@ -307,11 +315,11 @@ button:hover{
 }
 
 .big-returned-meal button {
-    background-color: #BDE0FE;
+    background-color: var(--blue);
 }
 
 .big-returned-meal button:hover {
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 .hide {
@@ -319,7 +327,7 @@ button:hover{
 }
 
 #mealplan-selector-img {
-    border: 3px solid #A2D2FF;
+    border: 3px solid var(--blue);
 }
 
 .welcome-container {
