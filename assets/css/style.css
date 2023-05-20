@@ -6,11 +6,28 @@ body {
     background-color: #CDB4DB;
 }
 
-header {
+nav {
     background-color:#CDB4DB;
+    overflow: hidden;
+    width: 100vw;
+    height: 7.5vh;
+    position: fixed;
+    top: 0;
 }
-header h2 {
+
+nav a {
+    float: left;
+    display: block;
+    color: black;
     text-align: center;
+    padding: 5px 15px;
+    text-decoration: none;
+    font-size: 2.25vw;
+}
+
+
+.logo {
+    font-size: 3vw;
     font-weight: bold;
 }
 
@@ -299,4 +316,12 @@ button:hover{
 
 .hide {
     display: none;
+}
+
+#mealplan-selector-img {
+    border: 3px solid #A2D2FF;
+}
+
+.welcome-container {
+    margin-top: 7.5vh;
 }
