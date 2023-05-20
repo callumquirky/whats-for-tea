@@ -6,29 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What's For Tea!?</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 </head>
 <body>
     <header>
-        <h2>What's For Tea!?</h2>
+        <nav class="navbar">
+            <a href="#" class="nav-logo">What's For Tea!?</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">What do I need?</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">What to make?</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Meal Plan</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            
+        </nav>
     </header>
-    <section class="what-ingredient container col-12">
-        <h3>What do I need?</h3>
+    <section class="what-ingredient container-fluid col">
+        <h2>What do I need?</h2>
         <p>Search by dish, then choose the most delicious looking to see the recipe!</p>
-        <input id="ingredient-search-text"placeholder="Spaghetti Carbonara" type="text">
+        <input id="ingredient-search-text"placeholder="Carbonara" type="text">
         <div class="row">
             <button class="col blue-clear-search"id="ingredient-search-button">Search</button>
             <button class="col blue-clear-search">Clear</button></div>
         </div>
         <div id="ingredient-section">
-            <!-- use DOM to return ingredients and other information here-->
-            <!-- also include Save To Meal Plan? functionality-->
+            <!--return ingredients and other information here-->
         </div>
     </section>
-    <section class="what-meal container col-12">
-        <h3>What To Make?</h3>
+    <section class="what-meal container-fluid col">
+        <h2>What to make?</h2>
         <p>Add your ingredients to search list one at a time, specify search preferences, then go!</p>
         <input id="meal-search-text"placeholder="onion" type="text">
         <button id="add-ingredient-button">Add Ingredient To Search</button>
@@ -37,38 +57,39 @@
             <button class="col clear-search">Clear</button></div>
         <button id="meal-search-filters">Search Preferences</button>
         <div id="meal-section" card ="container">
-            <!-- use DOM to return meals and other information here-->
-            <!-- also include Save To Meal Plan? functionality-->
+            <!-- return meals and other information here-->
         </div>
         <div class="container">
             <div id="meal-card-row" class="row"></div>
         </div>
     </section>
-    <section class="meal-plan bg-light container col-12">
-        <div class="row mealplan-row">
+    <section class="meal-plan container-fluid col">
+        <h2>Meal Plan</h2>
+        <p>Your meals for the week! Add to meal plan by finding something tasty in "What do I need" or "What to make?".</p>
+        <button id="mealplan-visible">Show/Hide</button>
+    </section>
+    <section class="mealplan-row-container container-fluid">
+        <div class="mealplan-row container-fluid row hide">
             <div class="monday col-md mealplan-div">
-                    <h3>Mon</h3>
-                <div class="row">
-                    <div id="monday-breakfast" class="mealslot-div">
-                        <h4>Breakfast</h4>
-                        <h5 id="monday-breakfast-text"></h5>
-                        <img src="" id="monday-breakfast-img">
-                    </div>
-                    <div id="monday-lunch" class="mealslot-div">
-                        <h4>Lunch</h4>
-                        <h5 id="monday-lunch-text"></h5>
-                        <img src="" id="monday-lunch-img">
-                    </div>
-                    <div id="monday-dinner" class="mealslot-div">
-                        <h4>Dinner</h4>
-                        <h5 id="monday-dinner-text"></h5>
-                        <img src="" id="monday-dinner-img">
-                    </div>
+                <h3>Mon</h3>
+                <div id="monday-breakfast" class="mealslot-div">
+                    <h4>Breakfast</h4>
+                    <h5 id="monday-breakfast-text"></h5>
+                    <img src="" id="monday-breakfast-img">
+                </div>
+                <div id="monday-lunch" class="mealslot-div">
+                    <h4>Lunch</h4>
+                    <h5 id="monday-lunch-text"></h5>
+                    <img src="" id="monday-lunch-img">
+                </div>
+                <div id="monday-dinner" class="mealslot-div">
+                    <h4>Dinner</h4>
+                    <h5 id="monday-dinner-text"></h5>
+                    <img src="" id="monday-dinner-img">
                 </div>
             </div>
             <div class="tuesday col-md mealplan-div">
-                    <h3>Tue</h3>
-                
+                <h3>Tue</h3>
                 <div id="tuesday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="tuesday-breakfast-text"></h5>
@@ -85,8 +106,7 @@
                     <img src="" id="tuesday-dinner-img"></div>
             </div>
             <div class="wednesday col-md mealplan-div">
-                    <h3>Wed</h3>
-                
+                <h3>Wed</h3>
                 <div id="wednesday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="wednesday-breakfast-text"></h5>
@@ -105,8 +125,7 @@
                 </div>
             </div> 
             <div class="thursday col-md mealplan-div">
-                    <h3>Thurs</h3>
-                
+                <h3>Thurs</h3>
                 <div id="thursday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="thursday-breakfast-text"></h5>
@@ -124,8 +143,7 @@
                 </div>
             </div>
             <div class="friday col-md mealplan-div">
-                    <h3>Fri</h3>
-                
+                <h3>Fri</h3>
                 <div id="friday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="friday-breakfast-text"></h5>
@@ -143,8 +161,7 @@
                 </div>
             </div>
             <div class="saturday col-md mealplan-div">
-                    <h3>Sat</h3>
-                
+                <h3>Sat</h3>
                 <div id="saturday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="saturday-breakfast-text"></h5>
@@ -162,8 +179,7 @@
                 </div>
             </div>
             <div class="sunday col-md mealplan-div">
-                    <h3>Sun</h3>
-                
+                <h3>Sun</h3>
                 <div id="sunday-breakfast" class="mealslot-div">
                     <h4>Breakfast</h4>
                     <h5 id="sunday-breakfast-text"></h5>

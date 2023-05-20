@@ -1,15 +1,82 @@
+
 body {
     font-family: 'Work Sans', sans-serif;
 }
 
+:root {
+    --blue: #BDE0FE;
+    --pink: #FFC8DD;
+    --purple: #CDB4DB;
+}
+
 ::selection {
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 header {
-    background-color:#CDB4DB;
+    background-color: var(--purple);
 }
-header h2 {
+
+h5{
+    font-size: 1vw;
+}
+
+.navbar {
+    height: 7.5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 55px;
+}
+
+.nav-logo {
+    font-size: 2.75vw;
+    font-weight: bold;
+}
+
+.nav-menu li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-link {
+    float: left;
+    transition: ease 0.5s;
+    font-size: 1.5vw;
+    padding-top: 2.5vh;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3 ease-in-out;
+    transition: all 0.3 ease-in-out;
+    background-color: white;
+}
+
+p {
     text-align: center;
 }
 
@@ -18,8 +85,7 @@ button {
     margin-top: 1vh;
     margin-right: 1vw;
     height: 3vh;
-    background-color: #FFC8DD;
-    text-align: center;
+    background-color: var(--pink);
 }
 
 button:hover{
@@ -35,29 +101,27 @@ button:hover{
 }
 
 #ingredient-search-button, .save-preferences button, .blue-clear-search, #mealPlanSubmit{
-    background-color: #BDE0FE;
+    background-color: var(--blue);
 }
 
-#ingredient-search-button:hover{
-    background-color: #CDB4DB;
+#ingredient-search-button:hover, .blue-clear-search:hover{
+    background-color: var(--purple);
 }
 
 
 .save-preferences{
-    background-color: #BDE0FE;
+    background-color: var(--blue);
     justify-content: center;
     
 }
 
 .save-preferences:hover{
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
-.what-meal h3 {
-    text-align: center;
-}
 
-.what-ingredient h3 {
+.what-ingredient h2, .what-meal h2 {
+    font-weight: bold;
     text-align: center;
 }
 
@@ -85,7 +149,7 @@ button:hover{
 .error-modal {
     position: relative;
     height: 10vh;
-    background-color: #FFC8DD;
+    background-color: var(--pink);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,11 +160,20 @@ button:hover{
 .search-preferences-selector {
     position: relative;
     width: 50vw;
-    background-color: #FFC8DD;
+    background-color: var(--pink);
     display: block;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 1vw;
+}
+
+.search-preferences-selector, .error-modal,  .mealplan-selector {
+    border: 3px solid var(--blue);
+}
+
+.search-preferences-selector h4, .error-modal h4,  .mealplan-selector h4{
+    font-weight: bold;
 }
 
 .search-preferences-selector, button {
@@ -114,11 +187,9 @@ button:hover{
 
 .mealplan-selector{
     position: relative;
-    width: auto;
-    height: auto;
-    max-width: 60vh;
-    max-height: 60vh;
-    background-color: #FFC8DD;
+    width: 60vh;
+    height: 50vh;
+    background-color: var(--pink);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,10 +197,8 @@ button:hover{
 }
 
 .mealplan-selector img {
-    height: auto;
-    width: auto;
-    max-width: 60%;
-    max-height: 60%;
+    height: 50%;
+    width: 60%;
 }
 
 .mealplan-formbox {
@@ -173,11 +242,11 @@ button:hover{
 }
 
 .mealplan-div:nth-child(odd) {
-    background-color: #CDB4DB;
+    background-color: var(--blue);
 }
 
 .mealplan-div:nth-child(even){
-    background-color: #FFAFCC;
+    background-color: var(--pink);
 }
 
 .mealplan-div, h3, h4, h5 {
@@ -195,34 +264,50 @@ button:hover{
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    
+    border: 3px solid var(--purple);
 }
 
 
-.what-meal, .what-ingredient {
+.what-meal, .what-ingredient, .meal-plan, .mealplan-row-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    width: 95vw;
+    padding: 10px 5px;
 }
 
 
 .what-meal{
-    background-color: #A2D2FF;
+    background-color: var(--blue);
     margin-top: 1vh;
     margin-bottom: 1vh;
+    min-height: 32.5vh;
 }
 
 .what-ingredient{
-    background-color: #FFAFCC;
+    margin-top: 2vh;
+    min-height: 22.5vh;
+    background-color: var(--pink);
 }
+
+.meal-plan {
+    background-color: var(--purple);
+}
+
+.mealplan-row{
+    padding: 0;
+}
+
+
 .ingredient-list {
     margin: 5px;
+    padding: 0;
 }
 
 .ingredient-list li {
     margin: 3px;
-    background-color: #A2D2FF;
+    background-color: var(--blue);
     list-style: none;
 }
 
@@ -236,56 +321,161 @@ button:hover{
     cursor: pointer;
 }
 
-.returned-meal:hover{
-    background-color: #CDB4DB;
-}
-
-.returned-meal h4 {
-    font-size: 2vh;
+.returned-meal h5, h4 {
     font-weight: bold;
-
+    font-size: 1.6vw;
 }
+
+.returned-meal:hover{
+    background-color: var(--purple);
+}
+
 
 .returned-meal img {
     height: 20vh;
-    border: 3px solid #A2D2FF;
+    border: 3px solid var(--blue);
 }
 
 .blue-returned-meal img{
-    border: 3px solid #FFAFCC;
+    border: 3px solid var(--pink);
 }
 
 .blue-returned-meal:hover{
-    background-color: #CDB4DB;
+    background-color: var(--purple);
 }
 
 .big-returned-meal {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    align-items: flex-start;
+    flex-direction: row;
     padding: 1vh;
 }
 
-.big-returned-meal img {
+.big-returned-meal-img {
     width: auto;
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    border: 3px solid #A2D2FF;
+    border: 3px solid var(--blue);
+    text-align: center;
 }
 
-.big-returned-meal li {
+.big-returned-meal-img img{
+    width: 45vw;
+}
+
+
+.big-returned-meal-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.big-returned-meal-list h4 {
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px;
+}
+
+.big-returned-meal-list li {
     font-size: 1.8vh;
 }
 
-.big-returned-meal button {
-    background-color: #BDE0FE;
+.big-returned-meal-list button {
+    background-color: var(--blue);
 }
 
-.big-returned-meal button:hover {
-    background-color: #CDB4DB;
+.big-returned-meal-list button:hover {
+    background-color: var(--purple);
 }
 
+.hide {
+    display: none;
+}
+
+#mealplan-selector-img {
+    border: 3px solid var(--blue);
+}
+
+@media only screen and (max-width:768px) {
+    .hamburger{
+        display: block;
+        margin: 0 15px;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .navbar {
+        padding: 0px;
+    }
+
+    .nav-logo {
+        margin: 0 15px;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: -100%;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--purple);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 0;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        top: 0;
+    }
+
+    .nav-link {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width:850px){
+    .big-returned-meal {
+        flex-direction: column;
+        
+    }
+    .big-returned-meal-img {
+        margin-top: 10px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .big-returned-meal-img img{
+        width: 60vw;
+        display: inline-block;
+    }
 
 
+    .big-returned-meal-list {
+        margin: auto;
+    }
+
+    .ingredient-list {
+        padding: 0;
+    }
+
+    .nav-link {
+        font-size: 2vw;
+    }
+
+    .returned-meal h5, h4 {
+        font-size: 2.5vw;
+    }
+}

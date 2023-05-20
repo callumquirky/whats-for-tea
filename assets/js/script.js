@@ -29,7 +29,6 @@ $('#ingredient-search-button').on("click", function(event){
 // makes a list of ingredients that the user would like to search by for meals
 $('#add-ingredient-button').on("click", function(){
     searchIngreds.push($('#meal-search-text').val())
-    console.log(searchIngreds)
     $('#meal-section').empty()
     let searchIngredsEl = $('<p>').text(`Search for recipes with: ${searchIngreds.join(", ")}`)
     $('#meal-section').append(searchIngredsEl)
@@ -60,7 +59,7 @@ $(document).on("click", ".add-to-mealplan", function(event){
     $('.mealplan-confirm').empty()
     $('.mealplan-selector-bg').addClass("bg-active")
     $('#mealplan-selector-text').text($(this).parent().children()[0].innerHTML)
-    $('#mealplan-selector-img').attr("src", $(this).parent().children()[1].currentSrc)
+    $('#mealplan-selector-img').attr("src", $(this).parent().siblings().children()[0].currentSrc)
 })
  
 // eventlistener to close modals
@@ -119,6 +118,8 @@ $(document).on("click", ".returned-meal", function(){
         method:"GET"
     }).then(function(response){
         let returnedMealDiv = $('<div>').addClass("big-returned-meal")
+        let returnedMealImgDiv = $('<div>').addClass("big-returned-meal-img")
+        let returnedMealIngredDiv = $('<div>').addClass("big-returned-meal-list")
         let returnedMealName = $('<h4>').text(response.title)
         let returnedMealImg =$('<img>').attr("src", response.image)
         let ingredientUl = $('<ul>').addClass("ingredient-list")
@@ -127,7 +128,9 @@ $(document).on("click", ".returned-meal", function(){
             let ingredientText= $('<li>').text(`${response.extendedIngredients[i].name}: ${response.extendedIngredients[i].measures.metric.amount} ${response.extendedIngredients[i].measures.metric.unitShort}`)
             ingredientUl.append(ingredientText)
         }
-        returnedMealDiv.append(returnedMealName, returnedMealImg, mealPlanButton, ingredientUl)
+        returnedMealImgDiv.append(returnedMealImg)
+        returnedMealIngredDiv.append(returnedMealName, ingredientUl, mealPlanButton)
+        returnedMealDiv.append(returnedMealImgDiv, returnedMealIngredDiv)
         ingredSect.append(returnedMealDiv)
     })
 })
@@ -151,12 +154,10 @@ function searchError(search){
 
 function findMeals(){
     let queryURL = "https://api.spoonacular.com/recipes/complexSearch"+"?includeIngredients="+searchIngreds+"&diet="+dietPreference+"&intolerances="+intolerancePreference+"&type="+mealPreference+"&apiKey="+spoonacularAPIKey
-    console.log(queryURL)
     $.ajax({
         url:queryURL,
         method:"GET"
     }).then(function(response){
-        console.log(response)
         if (response.results.length == 0){
             searchError(searchIngreds)
         }
@@ -285,3 +286,29 @@ preferenceForm.on("submit", function(event){
     $('.search-preferences-bg').removeClass("bg-active")
     }
 )
+
+// button to show/hide mealplan
+
+$("#mealplan-visible").on("click", function(){
+    if($(".mealplan-row").hasClass("hide")){
+        $(".mealplan-row").removeClass("hide")
+    }
+    else {
+        $(".mealplan-row").addClass("hide")
+    }
+})
+
+// navbar script
+
+const hamburger = $('.hamburger')
+const navMenu = $('.nav-menu')
+
+hamburger.on("click", function(){
+    hamburger.toggleClass("active")
+    navMenu.toggleClass("active")
+})
+
+$(".nav-link").on("click", function() {
+    hamburger.removeClass("active");
+    navMenu.removeClass("active");
+});
