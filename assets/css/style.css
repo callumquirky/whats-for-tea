@@ -237,7 +237,7 @@ button:hover{
 }
 
 .mealplan-div:nth-child(odd) {
-    background-color: var(--purple);
+    background-color: var(--blue);
 }
 
 .mealplan-div:nth-child(even){
@@ -262,7 +262,7 @@ button:hover{
 }
 
 
-.what-meal, .what-ingredient, .meal-plan {
+.what-meal, .what-ingredient, .meal-plan, .mealplan-row-container{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -280,10 +280,20 @@ button:hover{
 }
 
 .what-ingredient{
-    margin-top: 5vh;
+    margin-top: 2vh;
     min-height: 22.5vh;
     background-color: var(--pink);
 }
+
+.meal-plan {
+    background-color: var(--purple);
+}
+
+.mealplan-row{
+    padding: 0;
+}
+
+
 .ingredient-list {
     margin: 5px;
 }
@@ -404,5 +414,9 @@ button:hover{
 
     .nav-menu.active {
         top: 0;
+    }
+
+    .nav-link {
+        font-size: 3vw;
     }
 }
