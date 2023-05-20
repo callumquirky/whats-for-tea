@@ -12,38 +12,81 @@ body {
     background-color: var(--purple);
 }
 
-nav {
+header {
     background-color: var(--purple);
-    overflow: hidden;
+}
+
+.navbar {
+    min-height: 7vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 55px;
+}
+
+.nav-logo {
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+nav {
+    /* overflow: hidden;
     width: 100vw;
     height: 7.5vh;
     position: fixed;
-    top: 0;
+    top: 0; */
+}
+
+.nav-menu li {
+    list-style: none;
 }
 
 nav a {
-    float: left;
+    /* /* float: left;
     display: block;
     color: black;
     text-align: center;
-    padding: 5px 15px;
+    padding: 5px 15px; */
     text-decoration: none;
-    font-size: 2.25vw;
+    color: black;
+    /* font-size: 2.25vw;
+    transition: background-color linear 0.35s;  */
 }
 
-nav a:hover {
-    background-color: var(--purple);
+.nav-link {
+    float: left;
+    transition: ease 0.5s;
 }
 
-.logo {
-    font-size: 3vw;
-    font-weight: bold;
+.nav-link:hover {
+    background-color: var(--pink);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3 ease-in-out;
+    transition: all 0.3 ease-in-out;
+    background-color: white;
 }
 
 p {
     text-align: center;
 }
-
 
 button {
     margin: 3.5px;
@@ -332,4 +375,23 @@ button:hover{
 
 .welcome-container {
     margin-top: 7.5vh;
+}
+
+@media only screen and (max-width:768px) {
+    .hamburger{
+        display: block;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        
+    }
 }
