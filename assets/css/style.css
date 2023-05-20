@@ -117,6 +117,7 @@ button:hover{
 
 
 .what-ingredient h2, .what-meal h2 {
+    font-weight: bold;
     text-align: center;
 }
 
@@ -296,6 +297,7 @@ button:hover{
 
 .ingredient-list {
     margin: 5px;
+    padding: 0;
 }
 
 .ingredient-list li {
@@ -351,7 +353,13 @@ button:hover{
     max-width: 100%;
     max-height: 100%;
     border: 3px solid var(--blue);
+    text-align: center;
 }
+
+.big-returned-meal-img img{
+    width: 45vw;
+}
+
 
 .big-returned-meal-list {
     display: flex;
@@ -438,6 +446,17 @@ button:hover{
         flex-direction: column;
         
     }
+    .big-returned-meal-img {
+        margin-top: 10px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .big-returned-meal-img img{
+        width: 60vw;
+        display: inline-block;
+    }
+
 
     .big-returned-meal-list {
         margin: auto;
@@ -447,4 +466,7 @@ button:hover{
         padding: 0;
     }
 
+    .nav-link {
+        font-size: 2vw;
+    }
 }
