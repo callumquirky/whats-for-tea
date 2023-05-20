@@ -321,20 +321,15 @@ button:hover{
     cursor: pointer;
 }
 
-.returned-meal h5 {
+.returned-meal h5, h4 {
     font-weight: bold;
-    font-size: 1.35vw;
+    font-size: 1.6vw;
 }
 
 .returned-meal:hover{
     background-color: var(--purple);
 }
 
-.returned-meal h4 {
-    font-size: 2vh;
-    font-weight: bold;
-
-}
 
 .returned-meal img {
     height: 20vh;
@@ -478,5 +473,9 @@ button:hover{
 
     .nav-link {
         font-size: 2vw;
+    }
+
+    .returned-meal h5, h4 {
+        font-size: 2.5vw;
     }
 }
