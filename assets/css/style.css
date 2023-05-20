@@ -340,12 +340,12 @@ button:hover{
 .big-returned-meal {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    align-items: flex-start;
+    flex-direction: row;
     padding: 1vh;
 }
 
-.big-returned-meal img {
+.big-returned-meal-img {
     width: auto;
     height: auto;
     max-width: 100%;
@@ -353,15 +353,27 @@ button:hover{
     border: 3px solid var(--blue);
 }
 
-.big-returned-meal li {
+.big-returned-meal-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.big-returned-meal-list h4 {
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px;
+}
+
+.big-returned-meal-list li {
     font-size: 1.8vh;
 }
 
-.big-returned-meal button {
+.big-returned-meal-list button {
     background-color: var(--blue);
 }
 
-.big-returned-meal button:hover {
+.big-returned-meal-list button:hover {
     background-color: var(--purple);
 }
 
@@ -419,4 +431,20 @@ button:hover{
     .nav-link {
         font-size: 3vw;
     }
+}
+
+@media only screen and (max-width:850px){
+    .big-returned-meal {
+        flex-direction: column;
+        
+    }
+
+    .big-returned-meal-list {
+        margin: auto;
+    }
+
+    .ingredient-list {
+        padding: 0;
+    }
+
 }

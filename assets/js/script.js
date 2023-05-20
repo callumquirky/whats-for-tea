@@ -118,6 +118,8 @@ $(document).on("click", ".returned-meal", function(){
         method:"GET"
     }).then(function(response){
         let returnedMealDiv = $('<div>').addClass("big-returned-meal")
+        let returnedMealImgDiv = $('<div>').addClass("big-returned-meal-img")
+        let returnedMealIngredDiv = $('<div>').addClass("big-returned-meal-list")
         let returnedMealName = $('<h4>').text(response.title)
         let returnedMealImg =$('<img>').attr("src", response.image)
         let ingredientUl = $('<ul>').addClass("ingredient-list")
@@ -126,7 +128,9 @@ $(document).on("click", ".returned-meal", function(){
             let ingredientText= $('<li>').text(`${response.extendedIngredients[i].name}: ${response.extendedIngredients[i].measures.metric.amount} ${response.extendedIngredients[i].measures.metric.unitShort}`)
             ingredientUl.append(ingredientText)
         }
-        returnedMealDiv.append(returnedMealName, returnedMealImg, mealPlanButton, ingredientUl)
+        returnedMealImgDiv.append(returnedMealImg)
+        returnedMealIngredDiv.append(returnedMealName, ingredientUl, mealPlanButton)
+        returnedMealDiv.append(returnedMealImgDiv, returnedMealIngredDiv)
         ingredSect.append(returnedMealDiv)
     })
 })
