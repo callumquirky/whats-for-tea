@@ -303,3 +303,8 @@ hamburger.on("click", function(){
     hamburger.toggleClass("active")
     navMenu.toggleClass("active")
 })
+
+$(".nav-link").on("click", function() {
+    hamburger.removeClass("active");
+    navMenu.removeClass("active");
+});
