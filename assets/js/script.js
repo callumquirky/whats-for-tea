@@ -293,3 +293,13 @@ $("#mealplan-visible").on("click", function(){
         $(".mealplan-row").addClass("hide")
     }
 })
+
+// navbar script
+
+const hamburger = $('.hamburger')
+const navMenu = $('.nav-menu')
+
+hamburger.on("click", function(){
+    hamburger.toggleClass("active")
+    navMenu.toggleClass("active")
+})

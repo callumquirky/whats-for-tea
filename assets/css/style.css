@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Work Sans', sans-serif;
 }
@@ -380,6 +381,7 @@ button:hover{
 @media only screen and (max-width:768px) {
     .hamburger{
         display: block;
+        margin: 0 15px;
     }
     .hamburger.active .bar:nth-child(2){
         opacity: 0;
@@ -391,7 +393,31 @@ button:hover{
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    .navbar {
+        padding: 0px;
+    }
+
+    .nav-logo {
+        margin: 0 15px;
+    }
+
     .nav-menu {
-        
+        position: fixed;
+        top: -100%;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--purple);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 0;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        top: 0;
     }
 }
