@@ -21,6 +21,15 @@ h5{
     font-size: 1vw;
 }
 
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: var(--purple);
+    z-index: 99;
+}
+
 .navbar {
     height: 7.5vh;
     display: flex;
@@ -81,10 +90,8 @@ p {
 }
 
 button {
+    height: 3.5vh;
     margin: 3.5px;
-    margin-top: 1vh;
-    margin-right: 1vw;
-    height: 3vh;
     background-color: var(--pink);
 }
 
@@ -93,11 +100,9 @@ button:hover{
 }
 
 .blue-clear-search{
+    height: 3.5vh;
     margin: 3.5px;
-    margin-top: 1vh;
-    margin-right: 1vw;
-    height: 3vh;
-    text-align: center;
+    
 }
 
 #ingredient-search-button, .save-preferences button, .blue-clear-search, #mealPlanSubmit{
@@ -286,7 +291,7 @@ button:hover{
 }
 
 .what-ingredient{
-    margin-top: 2vh;
+    margin-top: 9vh;
     min-height: 22.5vh;
     background-color: var(--pink);
 }
@@ -398,54 +403,6 @@ button:hover{
     border: 3px solid var(--blue);
 }
 
-@media only screen and (max-width:768px) {
-    .hamburger{
-        display: block;
-        margin: 0 15px;
-    }
-    .hamburger.active .bar:nth-child(2){
-        opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(1){
-        transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.active .bar:nth-child(3){
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    .navbar {
-        padding: 0px;
-    }
-
-    .nav-logo {
-        margin: 0 15px;
-    }
-
-    .nav-menu {
-        position: fixed;
-        top: -100%;
-        gap: 0;
-        flex-direction: column;
-        background-color: var(--purple);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        padding: 0;
-    }
-
-    .nav-item {
-        margin: 16px 0;
-    }
-
-    .nav-menu.active {
-        top: 0;
-    }
-
-    .nav-link {
-        font-size: 3vw;
-    }
-}
-
 @media only screen and (max-width:850px){
     .big-returned-meal {
         flex-direction: column;
@@ -477,5 +434,59 @@ button:hover{
 
     .returned-meal h5, h4 {
         font-size: 2.5vw;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .hamburger{
+        display: block;
+        margin: 0 15px;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+
+    .navbar {
+        padding: 0px;
+    }
+
+    .nav-logo {
+        margin: 0 15px;
+        font-size: 4.5vw;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: -100%;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--purple);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 0;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        top: 0;
+    }
+
+    .nav-link {
+        font-size: 3vw;
+    }
+
+    .returned-meal h4, .returned-meal h5 {
+        font-size: 4vw;
     }
 }
