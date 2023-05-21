@@ -263,9 +263,16 @@ button:hover{
 }
 
 .mealplan-div h3{
-    position: relative;
-    top: -5px;
+    font-size: 3vw;
     font-weight: bold;
+}
+
+.mealplan-div h4{
+    font-size: 2vw;
+}
+
+.mealplan-div h5{
+    font-size: 1.25vw;
 }
 
 .mealslot-div img {
@@ -274,6 +281,13 @@ button:hover{
     max-width: 100%;
     max-height: 100%;
     border: 3px solid var(--purple);
+}
+
+.mealslot-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -407,6 +421,11 @@ button:hover{
     border: 3px solid var(--blue);
 }
 
+img[src=""]{
+    border: none;
+}
+
+
 @media only screen and (max-width:850px){
     .big-returned-meal {
         flex-direction: column;
@@ -492,5 +511,22 @@ button:hover{
 
     .returned-meal h4, .returned-meal h5 {
         font-size: 4vw;
+    }
+
+    .mealplan-div h3{
+        font-size: 5vw;
+        font-weight: bold;
+    }
+    
+    .mealplan-div h4{
+        font-size: 3.5vw;
+    }
+    
+    .mealplan-div h5{
+        font-size: 2.5vw;
+    }
+
+    .mealslot-div img {
+        width: 40vw;
     }
 }
