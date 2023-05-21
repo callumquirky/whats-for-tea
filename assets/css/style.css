@@ -50,7 +50,7 @@ header{
 }
 
 .nav-logo {
-    font-size: 2.75vw;
+    font-size: 2.55vw;
     font-weight: bold;
 }
 
@@ -129,9 +129,10 @@ button:hover{
 }
 
 
-#what-ingredient h2, #what-meal h2 {
+#what-ingredient h2, #what-meal h2, #meal-plan h2 {
     font-weight: bold;
     text-align: center;
+    font-size: 2vw;
 }
 
 .error-modal-bg, .mealplan-selector-bg, .search-preferences-bg {
@@ -263,16 +264,16 @@ button:hover{
 }
 
 .mealplan-div h3{
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: bold;
 }
 
 .mealplan-div h4{
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
 
 .mealplan-div h5{
-    font-size: 1.25vw;
+    font-size: 1vw;
 }
 
 .mealslot-div img {
@@ -458,6 +459,9 @@ img[src=""]{
     .returned-meal h5, h4 {
         font-size: 2.5vw;
     }
+    #what-ingredient h2, #what-meal h2, #meal-plan h2{
+        font-size: 5vw;
+    }
 }
 
 @media only screen and (max-width:768px) {
@@ -515,15 +519,14 @@ img[src=""]{
 
     .mealplan-div h3{
         font-size: 5vw;
-        font-weight: bold;
     }
     
     .mealplan-div h4{
-        font-size: 3.5vw;
+        font-size: 3.75vw;
     }
     
     .mealplan-div h5{
-        font-size: 2.5vw;
+        font-size: 2.75vw;
     }
 
     .mealslot-div img {
