@@ -197,7 +197,7 @@ $('#mealPlanSubmit').on("click", function(){
         localStorage.setItem("savedMeals", JSON.stringify(savedMeals))
         setMeals(savedMeal)
         let confirmDiv = $('<div>').attr("class", "mealplan-confirm")
-        let confirmMessage = $('<h4>').text(`Saved, meal stored in for ${$("#mealplan-date :selected").text()} ${$("#mealplan-meal :selected").text()}!`)
+        let confirmMessage = $('<h4>').text(`Saved, meal stored in ${$("#mealplan-date :selected").text()} for ${$("#mealplan-meal :selected").text()}!`)
         confirmMessage.addClass('confirm');
         confirmDiv.append(confirmMessage);
         $('.mealplan-selector').append(confirmDiv)
