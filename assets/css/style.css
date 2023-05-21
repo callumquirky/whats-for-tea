@@ -3,6 +3,10 @@ body {
     font-family: 'Work Sans', sans-serif;
 }
 
+html {
+    scroll-padding-top: 7vh;
+  }
+
 :root {
     --blue: #BDE0FE;
     --pink: #FFC8DD;
@@ -125,7 +129,7 @@ button:hover{
 }
 
 
-.what-ingredient h2, .what-meal h2 {
+#what-ingredient h2, #what-meal h2 {
     font-weight: bold;
     text-align: center;
 }
@@ -255,7 +259,7 @@ button:hover{
 }
 
 .mealplan-div, h3, h4, h5 {
-    text-align:center
+    text-align:centert-ingredient
 }
 
 .mealplan-div h3{
@@ -273,7 +277,7 @@ button:hover{
 }
 
 
-.what-meal, .what-ingredient, .meal-plan, .mealplan-row-container{
+#what-meal, #what-ingredient, #meal-plan, .mealplan-row-container{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -283,20 +287,20 @@ button:hover{
 }
 
 
-.what-meal{
+#what-meal{
     background-color: var(--blue);
     margin-top: 1vh;
     margin-bottom: 1vh;
     min-height: 32.5vh;
 }
 
-.what-ingredient{
+#what-ingredient{
     margin-top: 9vh;
     min-height: 22.5vh;
     background-color: var(--pink);
 }
 
-.meal-plan {
+#meal-plan {
     background-color: var(--purple);
 }
 
