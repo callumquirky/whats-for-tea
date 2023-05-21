@@ -14,16 +14,16 @@
 <body>
     <header>
         <nav class="navbar">
-            <a href="#" class="nav-logo">What's For Tea!?</a>
+            <a href="#top" class="nav-logo">What's For Tea!?</a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">What do I need?</a>
+                    <a href="#what-ingredient" class="nav-link">What do I need?</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">What to make?</a>
+                    <a href="#what-meal" class="nav-link">What to make?</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Meal Plan</a>
+                    <a href="#meal-plan" class="nav-link">Meal Plan</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -35,7 +35,7 @@
             
         </nav>
     </header>
-    <section class="what-ingredient container-fluid col">
+    <section id="what-ingredient" class="container-fluid">
         <h2>What do I need?</h2>
         <p>Search by dish, then choose the most delicious looking to see the recipe!</p>
         <input id="ingredient-search-text"placeholder="Carbonara" type="text">
@@ -47,7 +47,7 @@
             <!--return ingredients and other information here-->
         </div>
     </section>
-    <section class="what-meal container-fluid col">
+    <section id="what-meal" class="container-fluid">
         <h2>What to make?</h2>
         <p>Add your ingredients to search list one at a time, specify search preferences, then go!</p>
         <input id="meal-search-text"placeholder="onion" type="text">
@@ -63,7 +63,7 @@
             <div id="meal-card-row" class="row"></div>
         </div>
     </section>
-    <section class="meal-plan container-fluid col">
+    <section id="meal-plan" class="container-fluid">
         <h2>Meal Plan</h2>
         <p>Your meals for the week! Add to meal plan by finding something tasty in "What do I need" or "What to make?".</p>
         <button id="mealplan-visible">Show/Hide</button>
