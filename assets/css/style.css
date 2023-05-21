@@ -94,7 +94,7 @@ p {
 }
 
 button {
-    height: 3.5vh;
+    height: 1.75rem;
     margin: 3.5px;
     background-color: var(--pink);
 }
@@ -104,7 +104,7 @@ button:hover{
 }
 
 .blue-clear-search{
-    height: 3.5vh;
+    height: 1.75rem;
     margin: 3.5px;
     
 }
