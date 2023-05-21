@@ -383,10 +383,13 @@ button:hover{
     max-height: 100%;
     border: 3px solid var(--blue);
     text-align: center;
+    margin: auto;
 }
 
 .big-returned-meal-img img{
-    width: 45vw;
+    width: 35vw;
+    margin: auto;
+    display: inline-block;
 }
 
 
@@ -434,13 +437,10 @@ img[src=""]{
     }
     .big-returned-meal-img {
         margin-top: 10px;
-        text-align: center;
-        margin: auto;
     }
 
     .big-returned-meal-img img{
         width: 60vw;
-        display: inline-block;
     }
 
 
